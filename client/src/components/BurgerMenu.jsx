@@ -7,7 +7,7 @@ function BurgerMenu() {
     <Menu>
       <Link to="/main">Matches</Link>
       <Link to="/connections">Connections</Link>
-      <Link to="/user">User Profile</Link>
+      <Link to="/user">My Profile</Link>
     </Menu>
   );
 }
