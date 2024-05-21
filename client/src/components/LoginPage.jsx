@@ -3,7 +3,6 @@ import { ThemeSupa } from "@supabase/auth-ui-shared";
 import supabase from "../../config/config_file";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { generate } from "random-words";
 
 function LoginPage() {
@@ -11,6 +10,7 @@ function LoginPage() {
   const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
   const randomUsername = generate();
+
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((e) => {
       if (isNavigating) {
@@ -25,22 +25,21 @@ function LoginPage() {
       }
     });
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then((data) => {
       async function searchUserByID() {
         const user = await supabase
           .from("Users")
           .select("*")
           .eq("user_id", session.user.id);
-
+        console.log(user.data.length);
         setCurrentUser(user.data.length);
       }
       searchUserByID();
 
-      if (session.user.id)
-        if (session && !isNavigating) {
-          setIsNavigating(true);
-          navigate("/main");
-        }
+      if (session && !isNavigating) {
+        setIsNavigating(true);
+        navigate("/main");
+      }
     });
 
     return () => {
@@ -48,6 +47,7 @@ function LoginPage() {
     };
   }, [isNavigating, navigate]);
 
+  console.log(currentUser);
   if (currentUser === 0) {
     async function postUser() {
       await supabase
@@ -56,8 +56,7 @@ function LoginPage() {
         .select();
     }
     postUser();
-    navigate("/user");
-  } else {
+    // navigate("/user");
   }
 
   return (

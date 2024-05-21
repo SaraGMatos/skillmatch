@@ -4,6 +4,7 @@ import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import ConnectionsPage from "./components/ConnectionsPage";
+import { useState } from "react";
 // import Chat from "./components/Chat";
 
 function App() {
