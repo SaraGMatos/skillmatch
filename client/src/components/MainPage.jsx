@@ -18,6 +18,14 @@ function MainPage() {
       });
     }
     getUserData();
+
+    // async function postUser() {
+    //   await supabase
+    //     .from("Users")
+    //     .insert([{ username: "Dee" }])
+    //     .select();
+    // }
+    // postUser();
   }, []);
 
   async function signOutUser() {

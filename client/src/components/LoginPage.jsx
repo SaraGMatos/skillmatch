@@ -4,10 +4,13 @@ import supabase from "../../config/config_file";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { generate } from "random-words";
+
 function LoginPage() {
   const [isNavigating, setIsNavigating] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
-
+  const randomUsername = generate();
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((e) => {
       if (isNavigating) {
@@ -23,16 +26,39 @@ function LoginPage() {
     });
 
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session && !isNavigating) {
-        setIsNavigating(true);
-        navigate("/main");
+      async function searchUserByID() {
+        const user = await supabase
+          .from("Users")
+          .select("*")
+          .eq("user_id", session.user.id);
+
+        setCurrentUser(user.data.length);
       }
+      searchUserByID();
+
+      if (session.user.id)
+        if (session && !isNavigating) {
+          setIsNavigating(true);
+          navigate("/main");
+        }
     });
 
     return () => {
       authListener.data.subscription.unsubscribe();
     };
   }, [isNavigating, navigate]);
+
+  if (currentUser === 0) {
+    async function postUser() {
+      await supabase
+        .from("Users")
+        .insert([{ username: randomUsername }])
+        .select();
+    }
+    postUser();
+    navigate("/user");
+  } else {
+  }
 
   return (
     <Auth
