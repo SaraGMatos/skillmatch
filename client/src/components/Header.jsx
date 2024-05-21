@@ -2,11 +2,12 @@ import BurgerMenu from "./BurgerMenu";
 import UserDropdown from "./UserDropdown";
 
 function Header() {
-  return;
-  <>
-    <BurgerMenu />
-    <UserDropdown />;
-  </>;
+  return (
+    <>
+      <BurgerMenu />
+      <UserDropdown />
+    </>
+  );
 }
 
 export default Header;
