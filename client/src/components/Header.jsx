@@ -8,10 +8,11 @@ function Header() {
   // if (location.pathname !== "/")
   return (
     <>
-      <h1>SkillMatch</h1>
+      <h1 style={{ textAlign: "center" }}>SkillMatch</h1>
       {isSignedIn && (
         <>
-          <BurgerMenu /> <UserDropdown />
+          <BurgerMenu />
+          <UserDropdown />
         </>
       )}
     </>

@@ -6,26 +6,34 @@ import { useState, useEffect } from "react";
 
 function MainPage() {
   const [user, setUser] = useState("");
-
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getUserData() {
-      await supabase.auth.getUser().then((value) => {
-        if (value.data?.user) {
-          setUser(value.data.user);
-        }
+      const authId = await supabase.auth.getUser();
+
+      const userId = authId.data.user.id;
+
+      let { data, error } = await supabase.rpc("get_user_by_id", {
+        userid: userId,
       });
+
+      if (!data.user_id) {
+        let { data, error } = await supabase.rpc("post_user", {
+          userid: userId,
+        });
+        navigate("/user");
+        if (error) {
+          console.error(error);
+        }
+      } else {
+        console.log("This user already exists");
+      }
+      if (error) {
+        console.log(error.code);
+      }
     }
     getUserData();
-
-    // async function postUser() {
-    //   await supabase
-    //     .from("Users")
-    //     .insert([{ username: "Dee" }])
-    //     .select();
-    // }
-    // postUser();
   }, []);
 
   async function signOutUser() {
