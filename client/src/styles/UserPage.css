@@ -1,1 +1,63 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
+* {
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+.UserPageComponent {
+  position: relative;
+  width: 480px;
+  border: 1px red solid;
+  margin: auto;
+}
+
+.UserPageComponent > img {
+  display: block;
+  max-width: 100%;
+
+  margin: auto;
+}
+
+.editButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+}
+
+.buttonToggle {
+  margin: auto;
+  width: 90%;
+  background-color: azure;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 2em;
+  padding: 0.5em;
+}
+
+.NewProfilePhotForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(208, 228, 221);
+  width: 100%;
+  position: absolute;
+  top: 50%;
+}
