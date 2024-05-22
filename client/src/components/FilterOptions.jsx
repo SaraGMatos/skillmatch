@@ -8,12 +8,17 @@ function FilterOptions() {
 
   // Below is incomplete
   useEffect(() => {
+    console.log("hi");
     async function getUserInterests() {
       let { data, error } = await supabase.rpc("get_user_interests", {
         userid: user.user_id,
       });
-      if (error) console.error(error);
-      else console.log(data);
+      // if (error) {
+      //   console.error(error);
+      // } else {
+      //   console.log(data);
+      // }
+      console.log(data);
     }
   }, []);
 
