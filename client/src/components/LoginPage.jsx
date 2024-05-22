@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
 import supabase from "../../config/config_file";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [session, setSession] = useState(null);
@@ -22,6 +22,12 @@ function LoginPage() {
     return () => subscription.unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (session) {
+      navigate("/main", [session, navigate]);
+    }
+  });
+
   if (!session) {
     return (
       <Auth
@@ -30,9 +36,9 @@ function LoginPage() {
         providers={[]}
       />
     );
-  } else {
-    navigate("/main");
   }
+
+  return null;
 }
 
 export default LoginPage;
