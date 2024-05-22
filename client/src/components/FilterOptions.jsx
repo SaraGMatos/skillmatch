@@ -23,18 +23,21 @@ function FilterOptions() {
   }, []);
 
   return (
-    <div>
+    <div className="filter-options-container">
       <button>Matches</button>
-      <label htmlFor="filter">Choose your desired skill:</label>
-      <select name="filter" id="filter">
-        {interests.map((interest) => {
-          return (
-            <option key={interest.skill_id} value={interest.skill_name}>
-              {interest.skill_name}
-            </option>
-          );
-        })}
-      </select>
+      <div className="filter-options-dropdown-container">
+        <label htmlFor="filter">Choose your desired skill:</label>
+        <select name="filter" id="filter">
+          {interests.map((interest) => {
+            return (
+              <option key={interest.skill_id} value={interest.skill_name}>
+                {interest.skill_name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
       <button>Learning</button>
     </div>
   );
