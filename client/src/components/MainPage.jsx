@@ -2,10 +2,11 @@ import FilterOptions from "./FilterOptions";
 import MatchList from "./MatchList";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 function MainPage() {
-  const [user, setUser] = useState("");
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,11 +23,13 @@ function MainPage() {
         let { data, error } = await supabase.rpc("post_user", {
           userid: userId,
         });
+        setUser(data);
         navigate("/user");
         if (error) {
           console.error(error);
         }
       } else {
+        setUser(data);
         console.log("This user already exists");
       }
       if (error) {
@@ -34,7 +37,7 @@ function MainPage() {
       }
     }
     getUserData();
-  }, []);
+  }, [navigate]);
 
   async function signOutUser() {
     const { error } = await supabase.auth.signOut();
