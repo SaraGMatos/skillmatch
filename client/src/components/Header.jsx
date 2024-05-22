@@ -3,9 +3,8 @@ import UserDropdown from "./UserDropdown";
 import { useLocation } from "react-router-dom";
 
 function Header() {
-  let location = useLocation();
-  let isSignedIn = location.pathname !== "/";
-  // if (location.pathname !== "/")
+  const location = useLocation();
+  const isSignedIn = location.pathname !== "/";
   return (
     <>
       <h1 style={{ textAlign: "center" }}>SkillMatch</h1>

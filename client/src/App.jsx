@@ -5,6 +5,7 @@ import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import ConnectionsPage from "./components/ConnectionsPage";
 import { useState } from "react";
+import Footer from "./components/Footer";
 // import Chat from "./components/Chat";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/connections" element={<ConnectionsPage />} />
         {/* <Route path="/chat/:id" element={<Chat />} /> */}
       </Routes>
+      <Footer />
     </>
   );
 }
