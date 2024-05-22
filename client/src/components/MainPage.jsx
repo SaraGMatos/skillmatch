@@ -12,15 +12,15 @@ function MainPage() {
     async function getUserData() {
       const authId = await supabase.auth.getUser();
 
-      const userData = authId.data.user.id;
+      const userId = authId.data.user.id;
 
       let { data, error } = await supabase.rpc("get_user_by_id", {
-        userid: userData,
+        userid: userId,
       });
 
       if (!data.user_id) {
         let { data, error } = await supabase.rpc("post_user", {
-          userid: userData,
+          userid: userId,
         });
         navigate("/user");
         if (error) {
