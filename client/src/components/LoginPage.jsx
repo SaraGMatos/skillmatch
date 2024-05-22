@@ -20,7 +20,7 @@ function LoginPage() {
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
 
   if (!session) {
     return (
