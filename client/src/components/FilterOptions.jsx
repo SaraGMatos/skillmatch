@@ -1,37 +1,39 @@
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import supabase from "../../config/config_file";
 
 function FilterOptions() {
+  const [interests, setInterests] = useState([]);
   const { user } = useContext(UserContext);
   console.log(user);
 
-  // Below is incomplete
   useEffect(() => {
-    console.log("hi");
     async function getUserInterests() {
       let { data, error } = await supabase.rpc("get_user_interests", {
         userid: user.user_id,
       });
-      // if (error) {
-      //   console.error(error);
-      // } else {
-      //   console.log(data);
-      // }
-      console.log(data);
+      if (error) {
+        console.error(error);
+      } else {
+        setInterests(data);
+      }
     }
+    getUserInterests();
   }, []);
-
-  // main/exchange?interest1
-  // main/learning?interest2
 
   return (
     <div>
       <button>Matches</button>
+      <label htmlFor="filter">Choose your desired skill:</label>
       <select name="filter" id="filter">
-        // User Interest List
-        <option value="interest 1">Interest 1</option>
-        <option value="interest 2">Interest 2</option>
+        {interests.map((interest) => {
+          return (
+            <option key={interest.skill_id} value={interest.skill_name}>
+              {interest.skill_name}
+            </option>
+          );
+        })}
       </select>
       <button>Learning</button>
     </div>
