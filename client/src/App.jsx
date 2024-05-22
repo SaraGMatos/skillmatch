@@ -6,8 +6,7 @@ import UserPage from "./components/UserPage";
 import ConnectionsPage from "./components/ConnectionsPage";
 import Footer from "./components/Footer";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-
-// import Chat from "./components/Chat";
+import ChatPage from "./components/ChatPage";
 
 function App() {
   return (
@@ -15,12 +14,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/connections" element={<ConnectionsPage />} />
-          {/* <Route path="/chat/:id" element={<Chat />} /> */}
-        </Route>
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/user" element={<UserPage />} />
+        <Route path="/connections" element={<ConnectionsPage />} />
+        {/* <Route path="/chat/:id" element={<Chat />} /> */}
       </Routes>
       <Footer />
     </>

@@ -39,20 +39,8 @@ function MainPage() {
     getUserData();
   }, [navigate]);
 
-  async function signOutUser() {
-    const { error } = await supabase.auth.signOut();
-    navigate("/");
-  }
-
   return (
     <>
-      <button
-        onClick={() => {
-          signOutUser();
-        }}
-      >
-        Sign Out
-      </button>
       <FilterOptions />
       <MatchList />
     </>

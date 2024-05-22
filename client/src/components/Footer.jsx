@@ -8,7 +8,7 @@ function Footer() {
   return (
     <>
       {isSignedIn && (
-        <div>
+        <div className="footer-container">
           <Link to="/main">
             <button>Home</button>
           </Link>
