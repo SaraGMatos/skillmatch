@@ -8,9 +8,10 @@ import { generate } from "random-words";
 
 function LoginPage() {
   const [isNavigating, setIsNavigating] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState(0);
   const navigate = useNavigate();
   const randomUsername = generate();
+
   useEffect(() => {
     const authListener = supabase.auth.onAuthStateChange((e) => {
       if (isNavigating) {
@@ -56,8 +57,6 @@ function LoginPage() {
         .select();
     }
     postUser();
-    navigate("/user");
-  } else {
   }
 
   return (
