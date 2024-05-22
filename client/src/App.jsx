@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
+      <Routes element={ProtectedRoutes}>
         <Route path="/" element={<LoginPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/user" element={<UserPage />} />
