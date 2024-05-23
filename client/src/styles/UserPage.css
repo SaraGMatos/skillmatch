@@ -20,7 +20,8 @@ h6 {
 
 .UserPageComponent {
   position: relative;
-  width: 480px;
+  width: 80vw;
+  max-width: 600px;
   border: 1px red solid;
   margin: auto;
 }
