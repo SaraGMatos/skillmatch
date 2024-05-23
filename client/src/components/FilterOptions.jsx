@@ -6,7 +6,6 @@ import supabase from "../../config/config_file";
 function FilterOptions() {
   const [interests, setInterests] = useState([]);
   const { user } = useContext(UserContext);
-  console.log(user);
 
   useEffect(() => {
     async function getUserInterests() {

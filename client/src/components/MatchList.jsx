@@ -4,89 +4,111 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function MatchList() {
-  const {user} = useContext(UserContext)
-  const [currentUserInterests, setCurrentUserInterests] = useState([])
-  const [currentUserSkills, setCurrentUserSkills] = useState([])
-  const [matchedUsers, setMatchedUsers] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
-  
-  
+  const { user } = useContext(UserContext);
+  const [matchedUsers, setMatchedUsers] = useState([]);
+  const [hasMatches, setHasMatches] = useState(false);
 
   const getUserInterests = async () => {
-    let { data, error } = await supabase.rpc('get_user_interests', {
-      userid: user.user_id
-    })
-    const userInterests = await data
-    if (error) console.error(error)
-    else {
-      
-      setCurrentUserInterests(userInterests[0])
-      console.log(userInterests[0], "UserInterest")
+    let { data, error } = await supabase.rpc("get_user_interests", {
+      userid: user.user_id,
+    });
+    if (error) {
+      console.error(error);
+      return [];
     }
-  }
-
+    return data;
+  };
 
   const getUserSkills = async () => {
-    let { data, error } = await supabase.rpc('get_user_skills', {
-      userid: user.user_id
-    })
-    const userSkills = await data
-    if (error) console.error(error)
-    else {
-      setCurrentUserSkills(userSkills[0])
-      console.log(userSkills[0], "UserSkills")
+    let { data, error } = await supabase.rpc("get_user_skills", {
+      userid: user.user_id,
+    });
+    if (error) {
+      console.error(error);
+      return [];
     }
-  }
-
+    return data;
+  };
 
   const getMatchedUsers = async () => {
-    let { data, error } = await supabase
-      .rpc('get_matched_users', {
-        skillid: currentUserInterests.skill_id,
-        interestid: currentUserSkills.skill_id,
-      })
-      const userMatched = await data
-    if (error) console.error(error)
-    else {
-      setMatchedUsers(userMatched)
-      console.log(userMatched)
-    }
-  } 
-  
-  useEffect(() => {
-    const innerFunc = async () => {
-      setIsLoading(true)
-      await getUserInterests();
-      await getUserSkills();
+    const usersThatSatisfyInterest = [];
+    const usersThatWantMySkills = [];
+    const userInterests = await getUserInterests();
+    const userSkills = await getUserSkills();
 
-      setTimeout(() => {
-        getMatchedUsers()
-    }, "10000")
-      setIsLoading(false)
-    }
-      innerFunc()
+    for (const interest of userInterests) {
+      let { data, error } = await supabase.rpc("get_users_by_skill", {
+        skillid: interest.skill_id,
+      });
 
-  }, [])
-     
-  if (isLoading) {
-   return null
- }
-     
-  return (
-    <ul>
-      {matchedUsers.map((user) => {
-        return(
-          <MatchCard
-            avatar_url={user.avatar_url}
-            username={user.username}
-            user_id={user.user_id}
-            key={user.user_id}
-          />
-        )
-      })
+      if (error) {
+        continue;
       }
-    </ul>
+
+      usersThatSatisfyInterest.push(
+        ...data.filter((person) => person.user_id !== user.user_id)
       );
-} 
+    }
+
+    for (const skill of userSkills) {
+      let { data, error } = await supabase.rpc("get_users_by_interest", {
+        skillid: skill.skill_id,
+      });
+
+      if (error) {
+        continue;
+      }
+
+      usersThatWantMySkills.push(
+        ...data.filter((person) => person.user_id !== user.user_id)
+      );
+    }
+
+    const matches = usersThatSatisfyInterest.filter(
+      (userThatHasTheSkillIWant) =>
+        usersThatWantMySkills.some(
+          (userThatWantsMySkill) =>
+            userThatHasTheSkillIWant.user_id === userThatWantsMySkill.user_id
+        )
+    );
+
+    if (matches.length === 0) {
+      setHasMatches(false);
+    } else {
+      setHasMatches(true);
+    }
+
+    return matches;
+  };
+
+  useEffect(() => {
+    if (user.user_id) {
+      getMatchedUsers().then((data) => {
+        setMatchedUsers(data);
+      });
+    }
+  }, [user]);
+
+  return (
+    <>
+      {hasMatches ? (
+        <ul>
+          {matchedUsers.map((user) => {
+            return (
+              <MatchCard
+                avatar_url={user.avatar_url}
+                username={user.username}
+                user_id={user.user_id}
+                key={user.user_id}
+              />
+            );
+          })}
+        </ul>
+      ) : (
+        <p>Sorry you don't have any matches at the moment!</p>
+      )}
+    </>
+  );
+}
 
 export default MatchList;

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import LearningList from "./LearningList";
 
 function MainPage() {
   const { setUser } = useContext(UserContext);
@@ -43,6 +44,8 @@ function MainPage() {
     <>
       <FilterOptions />
       <MatchList />
+      <p>-------------------------------------------</p>
+      <LearningList />
     </>
   );
 }
