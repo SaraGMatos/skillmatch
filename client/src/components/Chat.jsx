@@ -4,16 +4,19 @@ import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
 import '../styles/MessageCard.css'
 import MessageCard from "./MessageCard";
+import { useParams } from "react-router-dom";
 
 const socket = io.connect("https://skillmatch-production.up.railway.app/");
 
-export default function Chat({chatId}) {
+export default function Chat() {
+  const { id } = useParams();
   const { user } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [chat, setChat] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  chatId = "b89a4b86-df60-4f32-9a80-049ee3612646";
+  const chatId = id;
 
   const fetchMessages = async ()=> {
     let { data, error } = await supabase
@@ -69,21 +72,23 @@ export default function Chat({chatId}) {
 
   return (
     <div className="chat">
-      <section id="messages-list">
-        {messages.map((mess)=>{
+      <section id="chat-header" className="chat-header"> <h4>Chat ID: {chatId} </h4></section>
+      <section id="messages-list" className="messages-list">
+        {messages.toReversed().map((mess)=>{
           return <MessageCard message={mess}/>
         })}
       </section>
 
-      <form id="chat-message-form">
+      <form id="chat-message-form" className="chat-message-form">
         <input
           placeholder="Message..."
+          class="chat-input"
           onChange={(e) => {
             setMessage(e.target.value);
           }}
         ></input>
         <button onClick={sendMessage} type="submit">
-          Send message
+          Send
         </button>
       </form>
     </div>
