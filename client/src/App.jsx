@@ -7,6 +7,7 @@ import ConnectionsPage from "./components/ConnectionsPage";
 import Footer from "./components/Footer";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import ChatPage from "./components/ChatPage";
+import Chat from "./components/Chat";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/user" element={<UserPage />} />
         <Route path="/connections" element={<ConnectionsPage />} />
-        {/* <Route path="/chat/:id" element={<Chat />} /> */}
+        <Route path="/chat/:id" element={<Chat />} />
       </Routes>
       <Footer />
     </>
