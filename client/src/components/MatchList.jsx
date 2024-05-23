@@ -37,7 +37,6 @@ function MatchList() {
     const userSkills = await getUserSkills();
 
     for (const interest of userInterests) {
-      console.log("interest skill id", interest.skill_id);
       let { data, error } = await supabase.rpc("get_users_by_skill", {
         skillid: interest.skill_id,
       });
@@ -72,14 +71,6 @@ function MatchList() {
             userThatHasTheSkillIWant.user_id === userThatWantsMySkill.user_id
         )
     );
-    console.log("user interests", userInterests);
-    console.log("user skills", userSkills);
-    console.log(
-      "users that have sought after skills",
-      usersThatSatisfyInterest
-    );
-    console.log("users I can help", usersThatWantMySkills);
-    console.log(matches);
 
     if (matches.length === 0) {
       setHasMatches(false);
