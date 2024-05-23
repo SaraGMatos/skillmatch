@@ -2,6 +2,8 @@ import io from "socket.io-client";
 import { useEffect, useState, useContext } from "react";
 import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
+import '../styles/MessageCard.css'
+import MessageCard from "./MessageCard";
 
 const socket = io.connect("https://skillmatch-production.up.railway.app/");
 
@@ -69,7 +71,7 @@ export default function Chat({chatId}) {
     <div className="chat">
       <section id="messages-list">
         {messages.map((mess)=>{
-          return <p>{mess.message}</p>
+          return <MessageCard message={mess}/>
         })}
       </section>
 

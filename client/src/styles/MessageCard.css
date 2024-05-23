@@ -1,0 +1,21 @@
+.message-header {
+
+}
+
+.message-body {
+
+}
+
+.message-card {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+.my-chat {
+    text-align: right;
+}
+
+.not-my-chat {
+    justify-self: left;
+}
