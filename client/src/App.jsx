@@ -13,12 +13,14 @@ function App() {
   return (
     <>
       <Header />
-      <Routes element={ProtectedRoutes}>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/main" element={<MainPage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/connections" element={<ConnectionsPage />} />
-        <Route path="/chat/:id" element={<Chat />} />
+      <Routes>
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/connections" element={<ConnectionsPage />} />
+          <Route path="/chat/:id" element={<Chat />} />
+        </Route>
       </Routes>
       <Footer />
     </>
