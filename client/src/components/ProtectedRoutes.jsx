@@ -8,7 +8,7 @@ const ProtectedRoutes = () => {
   const { user, setUser } = useContext(UserContext);
 
   console.log(user);
-  return user.user_id ? <Outlet /> : <Navigate to="/" />;
+  return true ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoutes;

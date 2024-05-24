@@ -25,9 +25,9 @@ function LoginPage() {
   useEffect(() => {
     console.log(session);
     if (session) {
-      navigate("/main", [navigate]);
+      navigate("/main");
     }
-  });
+  }, [session]);
 
   if (!session) {
     return (
