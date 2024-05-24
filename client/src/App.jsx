@@ -14,8 +14,8 @@ function App() {
     <>
       <Header />
       <Routes>
+        <Route path="/" element={<LoginPage />} />
         <Route element={<ProtectedRoutes />}>
-          <Route path="/" element={<LoginPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/user" element={<UserPage />} />
           <Route path="/connections" element={<ConnectionsPage />} />
