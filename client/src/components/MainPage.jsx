@@ -44,8 +44,6 @@ function MainPage() {
     <>
       <FilterOptions />
       <MatchList />
-      <p>-------------------------------------------</p>
-      <LearningList />
     </>
   );
 }
