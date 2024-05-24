@@ -1,25 +1,19 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
 
-function UserInterests() {
-  const { user, setUser } = useContext(UserContext);
+function UserInterests({ userProfile }) {
   const [currentUserSkills, setCurrentUserSkills] = useState([]);
-  const [skillToDelete, setSkillToDelete] = useState("");
   const [addSkillsButton, setAddSkillsButton] = useState(false);
   const [skillToAdd, setSkillToAdd] = useState("");
   const [skillToAddDescription, setSkillToAddDescription] = useState("");
-  console.log(user);
-  console.log(currentUserSkills);
 
   useEffect(() => {
     async function getUserSkills() {
       let { data, error } = await supabase.rpc("get_user_skills", {
-        userid: user.user_id,
+        userid: userProfile.user_id,
       });
       setCurrentUserSkills(data);
-      console.log(currentUserSkills);
     }
     getUserSkills();
   }, []);
@@ -37,7 +31,6 @@ function UserInterests() {
 
   const handleOnChangeNewSkillDescription = (e) => {
     setSkillToAddDescription(e.target.value);
-    console.log(skillToAddDescription);
   };
 
   const handleAddSkillButton = () => {
@@ -47,10 +40,8 @@ function UserInterests() {
   const handleOnSubmitNewSkill = async (e) => {
     e.preventDefault();
     let { data, error } = await supabase.rpc("get_skills");
-    console.log(data);
+
     const checkIfSkillExists = data.some((skill) => {
-      console.log(skill.skill_name);
-      console.log(skillToAdd);
       return skill.skill_name === skillToAdd;
     });
 
@@ -59,26 +50,6 @@ function UserInterests() {
     } else {
       console.log("Skill does not exist");
     }
-
-    // let { data, error } = await supabase.rpc("post_skill", {
-    //   description: skillToAddDescription,
-    //   skillname: skillToAdd,
-    // });
-
-    // setCurrentUserSkills([...currentUserSkills, skillToAdd]);
-
-    // let { userSkillData, userSkillError } = await supabase.rpc(
-    //   "post_user_skill",
-    //   {
-    //     skill_id,
-    //     user_id,
-    //   }
-    // );
-    // if (error) console.error(error);
-    // else console.log(data);
-
-    // if (error) console.error(error);
-    // else console.log(data);
   };
 
   useEffect(() => {}, [currentUserSkills]);
@@ -86,7 +57,7 @@ function UserInterests() {
   return (
     <div>
       {currentUserSkills.map((skill, index) => {
-        user.user_id;
+        userProfile.user_id;
         return (
           <ul key={currentUserSkills.skill_id}>
             <li>

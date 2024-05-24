@@ -59,7 +59,7 @@ function UserPage() {
             User Interest {interestIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
           </button>
 
-          {interestIsVisible && <UserInterests />}
+          {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
 
         <div>
