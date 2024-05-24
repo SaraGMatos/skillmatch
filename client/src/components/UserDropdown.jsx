@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
@@ -30,6 +31,7 @@ function UserDropdown() {
     const usernameToConnect = prompt("Username: (case sensitive) ");
     const userIdToConnect = await getUser(usernameToConnect);
 
+
     let { data, error } = await supabase.rpc("post_chat", {
       chatname: usernameToConnect,
     });
@@ -40,12 +42,14 @@ function UserDropdown() {
       { chat_id: chatId, user_id: userIdToConnect },
     ]);
     navigate(`/chat/${chatId}`);
+
   }
 
   async function loggingOut() {
     if (confirm("Are you sure you want to log out?")) {
       const { error } = await supabase.auth.signOut();
       navigate("/");
+      setUser({});
     }
   }
 
