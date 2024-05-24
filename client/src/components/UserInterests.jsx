@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import supabase from "../../config/config_file";
 import { useState } from "react";
 
+<<<<<<< fixing_userpage_display
 function UserInterests({ userProfile }) {
   const [currentUserSkills, setCurrentUserSkills] = useState([]);
   const [addSkillsButton, setAddSkillsButton] = useState(false);
@@ -14,29 +15,67 @@ function UserInterests({ userProfile }) {
         userid: userProfile.user_id,
       });
       setCurrentUserSkills(data);
+=======
+function UserInterests() {
+  const { user, setUser } = useContext(UserContext);
+  const [currentUserInterest, setCurrentUserInterest] = useState([]);
+  const [interestToDelete, setInterestToDelete] = useState("");
+  const [addInterestButton, setAddInterestButton] = useState(false);
+  const [interestToAdd, setInterestToAdd] = useState("");
+  const [interestToAddDescription, setInterestToAddDescription] = useState("");
+  const [interestIDToAdd, setinterestIDToAdd] = useState("");
+  const [allInterest, setAllInterest] = useState([]);
+
+  const [existingInterestToAdd, setExistingInterestToAdd] = useState("");
+
+  useEffect(() => {
+    function getUserInterest() {
+      return supabase.rpc("get_user_interests", {
+        userid: user.user_id,
+      });
+>>>>>>> master
     }
-    getUserSkills();
-  }, []);
+
+    function getAllInterest() {
+      return supabase.rpc("get_skills");
+    }
+
+    getUserInterest().then(({ data }) => {
+      setCurrentUserInterest(data);
+    });
+
+    getAllInterest().then(({ data }) => {
+      setAllInterest(data);
+    });
+  }, [allInterest]);
 
   async function handleOnDelete(index, skill_id) {
-    setCurrentUserSkills(currentUserSkills.filter((_, i) => i !== index));
-    let { data, error } = await supabase.rpc("delete_skill", {
-      skillid: skill_id,
+    setCurrentUserInterest(currentUserInterest.filter((_, i) => i !== index));
+
+    let { data, error } = await supabase.rpc("delete_user_interest", {
+      skill_id: skill_id,
+      user_id: user.user_id,
     });
   }
 
-  const handleOnChangeNewSkill = (e) => {
-    setSkillToAdd(e.target.value);
+  const handleOnChangeNewInterest = (e) => {
+    setInterestToAdd(e.target.value);
   };
 
+<<<<<<< fixing_userpage_display
   const handleOnChangeNewSkillDescription = (e) => {
     setSkillToAddDescription(e.target.value);
+=======
+  const handleOnChangeNewInterestDescription = (e) => {
+    setInterestToAddDescription(e.target.value);
+>>>>>>> master
   };
 
-  const handleAddSkillButton = () => {
-    setAddSkillsButton(!addSkillsButton);
+  const handleOnChangeExistingInterest = (e) => {
+    setExistingInterestToAdd(e.target.value);
   };
 
+<<<<<<< fixing_userpage_display
   const handleOnSubmitNewSkill = async (e) => {
     e.preventDefault();
     let { data, error } = await supabase.rpc("get_skills");
@@ -50,21 +89,65 @@ function UserInterests({ userProfile }) {
     } else {
       console.log("Skill does not exist");
     }
+=======
+  const handleAddInterestButton = () => {
+    setAddInterestButton(!addInterestButton);
   };
 
-  useEffect(() => {}, [currentUserSkills]);
+  const handleOnSubmitNewInterest = async (e) => {
+    e.preventDefault();
 
+    const addNewInterest = async () => {
+      let { data, error } = await supabase.rpc("post_skill", {
+        description: interestToAddDescription,
+        skillname: interestToAdd,
+      });
+    };
+    addNewInterest();
+    setInterestToAddDescription("");
+    setInterestToAdd("");
+>>>>>>> master
+  };
+
+  const handleSubmitExisitngInterest = async (e) => {
+    e.preventDefault();
+
+    const interestId = allInterest.filter(
+      (interest) => interest.skill_name === existingInterestToAdd
+    );
+
+    const newInterestId = interestId[0].skill_id;
+
+    const postExistingInterest = async () => {
+      let { data, error } = await supabase.rpc("post_user_interest", {
+        skill_id: newInterestId,
+        user_id: user.user_id,
+      });
+
+      setCurrentUserInterest([
+        { skill_name: existingInterestToAdd },
+        ...currentUserInterest,
+      ]);
+    };
+    postExistingInterest();
+  };
   return (
     <div>
+<<<<<<< fixing_userpage_display
       {currentUserSkills.map((skill, index) => {
         userProfile.user_id;
+=======
+      {/* lists of interests */}
+      {currentUserInterest.map((interest, index) => {
+        user.user_id;
+>>>>>>> master
         return (
-          <ul key={currentUserSkills.skill_id}>
+          <ul key={currentUserInterest.skill_id}>
             <li>
-              <p>{skill.skill_name}</p>
+              <p>{interest.skill_name}</p>
               <button
-                value={skill.skill_id}
-                onClick={() => handleOnDelete(index, skill.skill_id)}
+                value={interest.skill_id}
+                onClick={() => handleOnDelete(index, interest.skill_id)}
               >
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
@@ -75,23 +158,47 @@ function UserInterests({ userProfile }) {
           </ul>
         );
       })}
-      <button onClick={handleAddSkillButton}>add skills</button>
-      {addSkillsButton ? (
-        <form onSubmit={handleOnSubmitNewSkill}>
-          <label htmlFor=""></label>
+      <button onClick={handleAddInterestButton}>add new interests</button>
+      {/* form with dropdown menu */}
+      {addInterestButton ? (
+        <form onSubmit={handleSubmitExisitngInterest}>
+          <label>
+            Pick your interests
+            <select onChange={handleOnChangeExistingInterest}>
+              <option>interest</option>
+              {allInterest.map((interest) => {
+                return (
+                  <option value={interest.skill_name}>
+                    {interest.skill_name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      ) : (
+        ""
+      )}
+      {/* additional interest to add */}
+
+      {addInterestButton ? (
+        <form onSubmit={handleOnSubmitNewInterest}>
+          <label htmlFor="">or add new interest</label>
           <input
             type="text"
-            value={skillToAdd}
-            onChange={handleOnChangeNewSkill}
+            value={interestToAdd}
+            onChange={handleOnChangeNewInterest}
+            placeholder="name of your interest"
           />
           <label htmlFor=""></label>
           <input
             type="text"
-            value={skillToAddDescription}
-            onChange={handleOnChangeNewSkillDescription}
-            placeholder="describe your skills"
+            value={interestToAddDescription}
+            onChange={handleOnChangeNewInterestDescription}
+            placeholder="describe your interest"
           />
-          <button type="submit">add your skills</button>
+          <button type="submit">add your interest</button>
         </form>
       ) : (
         ""
