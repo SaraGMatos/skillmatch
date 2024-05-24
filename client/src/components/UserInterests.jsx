@@ -1,8 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
 
+<<<<<<< fixing_userpage_display
+function UserInterests({ userProfile }) {
+  const [currentUserSkills, setCurrentUserSkills] = useState([]);
+  const [addSkillsButton, setAddSkillsButton] = useState(false);
+  const [skillToAdd, setSkillToAdd] = useState("");
+  const [skillToAddDescription, setSkillToAddDescription] = useState("");
+
+  useEffect(() => {
+    async function getUserSkills() {
+      let { data, error } = await supabase.rpc("get_user_skills", {
+        userid: userProfile.user_id,
+      });
+      setCurrentUserSkills(data);
+=======
 function UserInterests() {
   const { user, setUser } = useContext(UserContext);
   const [currentUserInterest, setCurrentUserInterest] = useState([]);
@@ -20,6 +33,7 @@ function UserInterests() {
       return supabase.rpc("get_user_interests", {
         userid: user.user_id,
       });
+>>>>>>> master
     }
 
     function getAllInterest() {
@@ -48,14 +62,34 @@ function UserInterests() {
     setInterestToAdd(e.target.value);
   };
 
+<<<<<<< fixing_userpage_display
+  const handleOnChangeNewSkillDescription = (e) => {
+    setSkillToAddDescription(e.target.value);
+=======
   const handleOnChangeNewInterestDescription = (e) => {
     setInterestToAddDescription(e.target.value);
+>>>>>>> master
   };
 
   const handleOnChangeExistingInterest = (e) => {
     setExistingInterestToAdd(e.target.value);
   };
 
+<<<<<<< fixing_userpage_display
+  const handleOnSubmitNewSkill = async (e) => {
+    e.preventDefault();
+    let { data, error } = await supabase.rpc("get_skills");
+
+    const checkIfSkillExists = data.some((skill) => {
+      return skill.skill_name === skillToAdd;
+    });
+
+    if (checkIfSkillExists) {
+      console.log("Skill already exists");
+    } else {
+      console.log("Skill does not exist");
+    }
+=======
   const handleAddInterestButton = () => {
     setAddInterestButton(!addInterestButton);
   };
@@ -72,6 +106,7 @@ function UserInterests() {
     addNewInterest();
     setInterestToAddDescription("");
     setInterestToAdd("");
+>>>>>>> master
   };
 
   const handleSubmitExisitngInterest = async (e) => {
@@ -98,9 +133,14 @@ function UserInterests() {
   };
   return (
     <div>
+<<<<<<< fixing_userpage_display
+      {currentUserSkills.map((skill, index) => {
+        userProfile.user_id;
+=======
       {/* lists of interests */}
       {currentUserInterest.map((interest, index) => {
         user.user_id;
+>>>>>>> master
         return (
           <ul key={currentUserInterest.skill_id}>
             <li>
