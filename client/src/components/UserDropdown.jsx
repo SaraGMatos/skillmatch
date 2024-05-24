@@ -1,8 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/BurgerMenu.css";
 import supabase from "../../config/config_file";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
   let myId = "";
 
@@ -44,10 +47,7 @@ function UserDropdown() {
   return (
     <div className="user-dropdown">
       <button className="dropdown-button">
-        <img
-          className="profile-pic"
-          src="https://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
-        />
+        <img className="profile-pic" src={user.avatar_url} />
       </button>
       <div className="dropdown-content">
         <Link id="dropdown-link" onClick={myProfile}>
