@@ -19,7 +19,7 @@ function FilterOptions() {
       }
     }
     getUserInterests();
-  }, []);
+  }, [user]);
 
   return (
     <div className="filter-options-container">
