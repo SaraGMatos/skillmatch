@@ -1,14 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/BurgerMenu.css";
 import supabase from "../../config/config_file";
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
-<<<<<<< fixing_userpage_display
-  const { setUser } = useContext(UserContext);
-  const navigate = useNavigate();
-=======
   const navigate = useNavigate();
   let myId = "";
 
@@ -39,12 +33,10 @@ function UserDropdown() {
 
     console.log();
   }
->>>>>>> master
 
   async function loggingOut() {
     if (confirm("Are you sure you want to log out?")) {
       const { error } = await supabase.auth.signOut();
-      setUser({});
       navigate("/");
     }
   }
