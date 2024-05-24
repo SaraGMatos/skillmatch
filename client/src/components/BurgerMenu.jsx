@@ -10,7 +10,7 @@ function BurgerMenu() {
     <Menu>
       <Link to="/main">Matches</Link>
       <Link to="/connections">Connections</Link>
-      <Link to={`/user/${user.username}`}>My Profile</Link>
+      <Link to={`/user/${user.user_id}`}>My Profile</Link>
     </Menu>
   );
 }
