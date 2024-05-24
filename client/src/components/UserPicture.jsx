@@ -1,31 +1,26 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
-
 import "../styles/UserPage.css";
-function UserPicture() {
-  const { user, setUser } = useContext(UserContext);
+
+function UserPicture({ userProfile, setUserProfile }) {
   const [newProfileImage, setNewProfileImage] = useState("");
   const [isAlertImageURL, setIsAlertImageURL] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data, error } = await supabase.rpc("update_user", {
       newavatarurl: newProfileImage,
-      newdescription: user.description,
-      newshowcase: user.showcase,
-      newusername: user.username,
-      userid: user.user_id,
+      newdescription: userProfile.description,
+      newshowcase: userProfile.showcase,
+      newusername: userProfile.username,
+      userid: userProfile.user_id,
     });
-    setUser(data);
+    setUserProfile(data);
   };
 
   useEffect(() => {
     setIsAlertImageURL(false);
-  }, [user]);
+  }, [userProfile]);
 
   const handleOnChange = (e) => {
     setNewProfileImage(e.target.value);
@@ -38,7 +33,7 @@ function UserPicture() {
   return (
     <>
       <div className="UserPageComponent">
-        <img src={user.avatar_url} alt="" />
+        <img src={userProfile.avatar_url} alt="" />
         <button className="editButton" onClick={handleOnClick}>
           <img
             src="https://static.thenounproject.com/png/2473159-200.png"
