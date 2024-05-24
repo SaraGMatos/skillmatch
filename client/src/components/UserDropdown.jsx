@@ -1,8 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/BurgerMenu.css";
 import supabase from "../../config/config_file";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   let myId = "";
 
@@ -28,16 +31,13 @@ function UserDropdown() {
   async function handleConnect() {
     const usernameToConnect = prompt("Username: (case sensitive) ");
     const userIdToConnect = await getUser(usernameToConnect);
-    //Create and navigate to chat
-    //If chat exists navigate to it instead
-
-    console.log();
   }
 
   async function loggingOut() {
     if (confirm("Are you sure you want to log out?")) {
       const { error } = await supabase.auth.signOut();
       navigate("/");
+      setUser({});
     }
   }
 
