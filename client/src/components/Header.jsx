@@ -1,20 +1,25 @@
 import BurgerMenu from "./BurgerMenu";
 import UserDropdown from "./UserDropdown";
 import { useLocation } from "react-router-dom";
-
+import "../styles/App.css";
+import { UserContext } from "../contexts/UserContext";
 function Header() {
   const location = useLocation();
   const isSignedIn = location.pathname !== "/";
+
   return (
-    <>
-      <h1 style={{ textAlign: "center" }}>SkillMatch</h1>
+    <nav className="navbar">
+      {/* <h1 style={{ textAlign: "center" }}>SkillMatch</h1> */}
+      <div className="headerImage">
+        <img src="../src/graphics/skillmatch_nobckg.png" alt="" />
+      </div>
       {isSignedIn && (
-        <>
+        <div className="headerLogged">
           <BurgerMenu />
           <UserDropdown />
-        </>
+        </div>
       )}
-    </>
+    </nav>
   );
 }
 

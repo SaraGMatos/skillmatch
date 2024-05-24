@@ -13,6 +13,13 @@
   border-radius: 10px;
 }
 
+.user-dropdown > img {
+  width: 100%;
+  height: auto;
+  min-width: 30px;
+  max-width: 60px;
+}
+
 #dropdown-link {
   display: block;
   color: black;
@@ -33,8 +40,9 @@ img {
   position: fixed;
   width: 25px;
   height: 25px;
-  right: 5%;
+  right: 10%;
   top: 2%;
+  z-index: 1000;
 }
 
 .bm-burger-button {

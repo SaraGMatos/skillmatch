@@ -5,7 +5,11 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
+
+  const { user } = useContext(UserContext);
+
   const { setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
@@ -56,10 +60,7 @@ function UserDropdown() {
   return (
     <div className="user-dropdown">
       <button className="dropdown-button">
-        <img
-          className="profile-pic"
-          src="https://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
-        />
+        <img className="profile-pic" src={user.avatar_url} />
       </button>
       <div className="dropdown-content">
         <Link id="dropdown-link" onClick={myProfile}>
