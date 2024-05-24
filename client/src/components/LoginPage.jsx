@@ -6,6 +6,7 @@ import { redirect, useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const [session, setSession] = useState(null);
+  const [event, setEvent] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,16 +19,14 @@ function LoginPage() {
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-
     return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
-    console.log(session);
     if (session) {
       navigate("/main");
     }
-  }, [session]);
+  }, [session, navigate]);
 
   if (!session) {
     return (
@@ -38,8 +37,6 @@ function LoginPage() {
       />
     );
   }
-
-  return null;
 }
 
 export default LoginPage;
