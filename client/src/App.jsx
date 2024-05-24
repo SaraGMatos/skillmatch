@@ -19,7 +19,7 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path="/main" element={<MainPage />} />
           <Route path="/learning" element={<LearningList />} />
-          <Route path="/user" element={<UserPage />} />
+          <Route path="/user/:id" element={<UserPage />} />
           <Route path="/connections" element={<ConnectionsPage />} />
           <Route path="/chat/:id" element={<Chat />} />
         </Route>
