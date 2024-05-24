@@ -1,4 +1,5 @@
 import MatchCard from "./MatchCard";
+import FilterOptions from "./FilterOptions";
 import supabase from "../../config/config_file";
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
@@ -6,6 +7,7 @@ import { UserContext } from "../contexts/UserContext";
 function LearningList() {
   const { user } = useContext(UserContext);
   const [matchedUsers, setMatchedUsers] = useState([]);
+  const [hasMatches, setHasMatches] = useState(false);
 
   const getUserInterests = async () => {
     let { data, error } = await supabase.rpc("get_user_interests", {
@@ -34,6 +36,12 @@ function LearningList() {
       usersThatSatisfyInterest.push(
         ...data.filter((person) => person.user_id !== user.user_id)
       );
+
+      if (usersThatSatisfyInterest.length === 0) {
+        setHasMatches(false);
+      } else {
+        setHasMatches(true);
+      }
     }
 
     return usersThatSatisfyInterest;
@@ -48,18 +56,25 @@ function LearningList() {
   }, [user]);
 
   return (
-    <ul>
-      {matchedUsers.map((user) => {
-        return (
-          <MatchCard
-            avatar_url={user.avatar_url}
-            username={user.username}
-            user_id={user.user_id}
-            key={user.user_id}
-          />
-        );
-      })}
-    </ul>
+    <>
+      <FilterOptions />
+      {hasMatches ? (
+        <ul>
+          {matchedUsers.map((user) => {
+            return (
+              <MatchCard
+                avatar_url={user.avatar_url}
+                username={user.username}
+                user_id={user.user_id}
+                key={user.user_id}
+              />
+            );
+          })}
+        </ul>
+      ) : (
+        <p>Sorry, there is nothing on your learning list at the moment!</p>
+      )}
+    </>
   );
 }
 

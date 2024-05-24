@@ -23,7 +23,10 @@ function FilterOptions() {
 
   return (
     <div className="filter-options-container">
-      <button>Matches</button>
+      <Link to="/main">
+        <button>Matches</button>
+      </Link>
+
       <div className="filter-options-dropdown-container">
         <label htmlFor="filter">Choose your desired skill:</label>
         <select name="filter" id="filter">
@@ -37,7 +40,9 @@ function FilterOptions() {
         </select>
       </div>
 
-      <button>Learning</button>
+      <Link to="/learning">
+        <button>Learning</button>
+      </Link>
     </div>
   );
 }

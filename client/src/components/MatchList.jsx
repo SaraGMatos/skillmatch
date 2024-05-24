@@ -105,7 +105,7 @@ function MatchList() {
           })}
         </ul>
       ) : (
-        <p>Sorry you don't have any matches at the moment!</p>
+        <p>Sorry, you don't have any matches at the moment!</p>
       )}
     </>
   );
