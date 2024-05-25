@@ -67,7 +67,7 @@ function UserPage() {
           <button className="buttonToggle" onClick={handleToggleSkills}>
             User Skills {skillsIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
           </button>
-          {skillsIsVisible && <UserIntroSkills />}
+          {skillsIsVisible && <UserIntroSkills userProfile={userProfile} />}
         </div>
 
         <div>
