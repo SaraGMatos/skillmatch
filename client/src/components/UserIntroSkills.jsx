@@ -1,17 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
 import "../styles/UserPage.css";
 
-function UserIntroSkills() {
-  const { user, setUser } = useContext(UserContext);
+function UserIntroSkills({ userProfile }) {
   const [currentUserSkills, setCurrentUserSkills] = useState([]);
-  const [skillToDelete, setSkillToDelete] = useState("");
   const [addSkillsButton, setAddSkillsButton] = useState(false);
   const [skillToAdd, setSkillToAdd] = useState("");
   const [skillToAddDescription, setSkillToAddDescription] = useState("");
-  const [skillIDToAdd, setSkillIDToAdd] = useState("");
   const [allSkills, setAllSkills] = useState([]);
 
   const [existingSkillsToAdd, setExistingSkillsToAdd] = useState("");
@@ -19,7 +15,7 @@ function UserIntroSkills() {
   useEffect(() => {
     function getUserSkills() {
       return supabase.rpc("get_user_skills", {
-        userid: user.user_id,
+        userid: userProfile.user_id,
       });
     }
 
@@ -41,7 +37,7 @@ function UserIntroSkills() {
 
     let { data, error } = await supabase.rpc("delete_user_skill", {
       skill_id: skill_id,
-      user_id: user.user_id,
+      user_id: userProfile.user_id,
     });
   }
 
@@ -87,7 +83,7 @@ function UserIntroSkills() {
     const postExistingSkill = async () => {
       let { data, error } = await supabase.rpc("post_user_skill", {
         skill_id: newSkillId,
-        user_id: user.user_id,
+        user_id: userProfile.user_id,
       });
 
       setCurrentUserSkills([
@@ -101,7 +97,7 @@ function UserIntroSkills() {
     <div className="user_skills_container">
       {/* lists of skills */}
       {currentUserSkills.map((skill, index) => {
-        user.user_id;
+        userProfile.user_id;
         return (
           <ul
             key={currentUserSkills.skill_id}
