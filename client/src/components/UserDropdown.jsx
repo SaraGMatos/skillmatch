@@ -19,12 +19,6 @@ function UserDropdown() {
       .from("Users")
       .select("user_id")
       .eq("username", username);
-
-    // if (data[0]) {
-    //   return data[0].user_id;
-    // } else {
-    //   alert("Username doesn't exist!");
-    // }
     return data[0];
   }
 
