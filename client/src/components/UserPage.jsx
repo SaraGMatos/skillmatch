@@ -10,7 +10,6 @@ import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
 import "../styles/UserPage.css";
 
-
 import "../styles/UserPage.css";
 
 function UserPage() {
@@ -58,24 +57,22 @@ function UserPage() {
 
         <UserPicture />
         <div className="each_User_Page_Section">
-
-        <UserPicture
-          userProfile={userProfile}
-          setUserProfile={setUserProfile}
-        />
-        <div>
-
-          <button className="buttonToggle" onClick={handleToggleInterest}>
-            User Interest{" "}
-            <img
-              className={
-                interestIsVisible ? "arrow_button_down" : "arrow_button_right"
-              }
-              src="../src/graphics/arrow_button.png"
-              alt=""
-            />
-          </button>
-
+          <UserPicture
+            userProfile={userProfile}
+            setUserProfile={setUserProfile}
+          />
+          <div>
+            <button className="buttonToggle" onClick={handleToggleInterest}>
+              User Interest{" "}
+              <img
+                className={
+                  interestIsVisible ? "arrow_button_down" : "arrow_button_right"
+                }
+                src="../src/graphics/arrow_button.png"
+                alt=""
+              />
+            </button>
+          </div>
           {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
 
