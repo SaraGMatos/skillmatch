@@ -20,29 +20,31 @@ function UserDropdown() {
       .select("user_id")
       .eq("username", username);
 
-    if (data[0]) {
-      return data[0].user_id;
-    } else {
-      alert("Username doesn't exist!");
-    }
+    // if (data[0]) {
+    //   return data[0].user_id;
+    // } else {
+    //   alert("Username doesn't exist!");
+    // }
+    return data[0];
   }
 
   async function handleConnect() {
     const usernameToConnect = prompt("Username: (case sensitive) ");
     const userIdToConnect = await getUser(usernameToConnect);
-
-
-    let { data, error } = await supabase.rpc("post_chat", {
-      chatname: usernameToConnect,
-    });
-    const chatId = data.chat_id;
-    const id = await user.user_id;
-    await supabase.from("UserChats").insert([
-      { chat_id: chatId, user_id: id },
-      { chat_id: chatId, user_id: userIdToConnect },
-    ]);
-    navigate(`/chat/${chatId}`);
-
+    if (!!userIdToConnect) {
+      let { data, error } = await supabase.rpc("post_chat", {
+        chatname: usernameToConnect,
+      });
+      const chatId = data.chat_id;
+      const id = await user.user_id;
+      await supabase.from("UserChats").insert([
+        { chat_id: chatId, user_id: id },
+        { chat_id: chatId, user_id: userIdToConnect.user_id },
+      ]);
+      navigate(`/chat/${chatId}`);
+    } else {
+      alert("Username doesn't exist!");
+    }
   }
 
   async function loggingOut() {
