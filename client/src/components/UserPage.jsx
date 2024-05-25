@@ -7,6 +7,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
+import "../styles/UserPage.css";
 
 import "../styles/UserPage.css";
 
@@ -40,24 +41,45 @@ function UserPage() {
       <div className="UserPageComponent">
         {/* Components below can be wrapped in an expandable */}
         <UserPicture />
-        <div>
+        <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleInterest}>
-            User Interest {interestIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+            User Interest{" "}
+            <img
+              className={
+                interestIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
           </button>
 
           {interestIsVisible && <UserInterests />}
         </div>
 
-        <div>
+        <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleSkills}>
-            User Skills {skillsIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+            User Skills{" "}
+            <img
+              className={
+                skillsIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
           </button>
           {skillsIsVisible && <UserIntroSkills />}
         </div>
 
-        <div>
+        <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleShowcase}>
-            User Showcase {showcaseIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+            User Showcase{" "}
+            <img
+              className={
+                showcaseIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
           </button>
           {showcaseIsVisible && <UserShowcase />}
         </div>

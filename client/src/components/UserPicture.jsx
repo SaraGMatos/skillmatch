@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
+import "../styles/UserPage.css";
 
 import "../styles/UserPage.css";
 function UserPicture() {

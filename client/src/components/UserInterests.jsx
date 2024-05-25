@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
+import "../styles/UserPage.css";
 
 function UserInterests() {
   const { user, setUser } = useContext(UserContext);
@@ -97,19 +98,23 @@ function UserInterests() {
     postExistingInterest();
   };
   return (
-    <div>
+    <div className="user_skills_container">
       {/* lists of interests */}
       {currentUserInterest.map((interest, index) => {
         user.user_id;
         return (
-          <ul key={currentUserInterest.skill_id}>
-            <li>
+          <ul
+            key={currentUserInterest.skill_id}
+            className="user_skills_list_container"
+          >
+            <li className="user_skills_list_item">
               <p>{interest.skill_name}</p>
               <button
                 value={interest.skill_id}
                 onClick={() => handleOnDelete(index, interest.skill_id)}
               >
                 <img
+                  className="user_skills_list_delete_button"
                   src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
                   alt=""
                 />
@@ -118,10 +123,18 @@ function UserInterests() {
           </ul>
         );
       })}
-      <button onClick={handleAddInterestButton}>add new interests</button>
+      <button
+        onClick={handleAddInterestButton}
+        className="add_existing_skills_button"
+      >
+        add new interests
+      </button>
       {/* form with dropdown menu */}
       {addInterestButton ? (
-        <form onSubmit={handleSubmitExisitngInterest}>
+        <form
+          onSubmit={handleSubmitExisitngInterest}
+          className="add_existing_skills_form"
+        >
           <label>
             Pick your interests
             <select onChange={handleOnChangeExistingInterest}>
@@ -135,7 +148,11 @@ function UserInterests() {
               })}
             </select>
           </label>
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            className="add_new_skills_button"
+          />
         </form>
       ) : (
         ""
@@ -143,7 +160,10 @@ function UserInterests() {
       {/* additional interest to add */}
 
       {addInterestButton ? (
-        <form onSubmit={handleOnSubmitNewInterest}>
+        <form
+          onSubmit={handleOnSubmitNewInterest}
+          className="add_new_skills_form"
+        >
           <label htmlFor="">or add new interest</label>
           <input
             type="text"
@@ -152,13 +172,15 @@ function UserInterests() {
             placeholder="name of your interest"
           />
           <label htmlFor=""></label>
-          <input
+          <textarea
             type="text"
             value={interestToAddDescription}
             onChange={handleOnChangeNewInterestDescription}
             placeholder="describe your interest"
           />
-          <button type="submit">add your interest</button>
+          <button type="submit" className="add_new_skills_button">
+            add your interest
+          </button>
         </form>
       ) : (
         ""
