@@ -1,24 +1,20 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
+import "../styles/UserPage.css";
 
-function UserInterests() {
-  const { user, setUser } = useContext(UserContext);
+function UserInterests({ userProfile }) {
   const [currentUserInterest, setCurrentUserInterest] = useState([]);
-  const [interestToDelete, setInterestToDelete] = useState("");
   const [addInterestButton, setAddInterestButton] = useState(false);
   const [interestToAdd, setInterestToAdd] = useState("");
   const [interestToAddDescription, setInterestToAddDescription] = useState("");
-  const [interestIDToAdd, setinterestIDToAdd] = useState("");
   const [allInterest, setAllInterest] = useState([]);
-
   const [existingInterestToAdd, setExistingInterestToAdd] = useState("");
 
   useEffect(() => {
     function getUserInterest() {
       return supabase.rpc("get_user_interests", {
-        userid: user.user_id,
+        userid: userProfile.user_id,
       });
     }
 
@@ -40,7 +36,7 @@ function UserInterests() {
 
     let { data, error } = await supabase.rpc("delete_user_interest", {
       skill_id: skill_id,
-      user_id: user.user_id,
+      user_id: userProfile.user_id,
     });
   }
 
@@ -86,7 +82,7 @@ function UserInterests() {
     const postExistingInterest = async () => {
       let { data, error } = await supabase.rpc("post_user_interest", {
         skill_id: newInterestId,
-        user_id: user.user_id,
+        user_id: userProfile.user_id,
       });
 
       setCurrentUserInterest([
@@ -97,19 +93,23 @@ function UserInterests() {
     postExistingInterest();
   };
   return (
-    <div>
+    <div className="user_skills_container">
       {/* lists of interests */}
       {currentUserInterest.map((interest, index) => {
-        user.user_id;
+        userProfile.user_id;
         return (
-          <ul key={currentUserInterest.skill_id}>
-            <li>
+          <ul
+            key={currentUserInterest.skill_id}
+            className="user_skills_list_container"
+          >
+            <li className="user_skills_list_item">
               <p>{interest.skill_name}</p>
               <button
                 value={interest.skill_id}
                 onClick={() => handleOnDelete(index, interest.skill_id)}
               >
                 <img
+                  className="user_skills_list_delete_button"
                   src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
                   alt=""
                 />
@@ -118,10 +118,18 @@ function UserInterests() {
           </ul>
         );
       })}
-      <button onClick={handleAddInterestButton}>add new interests</button>
+      <button
+        onClick={handleAddInterestButton}
+        className="add_existing_skills_button"
+      >
+        add new interests
+      </button>
       {/* form with dropdown menu */}
       {addInterestButton ? (
-        <form onSubmit={handleSubmitExisitngInterest}>
+        <form
+          onSubmit={handleSubmitExisitngInterest}
+          className="add_existing_skills_form"
+        >
           <label>
             Pick your interests
             <select onChange={handleOnChangeExistingInterest}>
@@ -135,7 +143,11 @@ function UserInterests() {
               })}
             </select>
           </label>
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            className="add_new_skills_button"
+          />
         </form>
       ) : (
         ""
@@ -143,7 +155,10 @@ function UserInterests() {
       {/* additional interest to add */}
 
       {addInterestButton ? (
-        <form onSubmit={handleOnSubmitNewInterest}>
+        <form
+          onSubmit={handleOnSubmitNewInterest}
+          className="add_new_skills_form"
+        >
           <label htmlFor="">or add new interest</label>
           <input
             type="text"
@@ -152,13 +167,15 @@ function UserInterests() {
             placeholder="name of your interest"
           />
           <label htmlFor=""></label>
-          <input
+          <textarea
             type="text"
             value={interestToAddDescription}
             onChange={handleOnChangeNewInterestDescription}
             placeholder="describe your interest"
           />
-          <button type="submit">add your interest</button>
+          <button type="submit" className="add_new_skills_button">
+            add your interest
+          </button>
         </form>
       ) : (
         ""

@@ -1,16 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
+import "../styles/UserPage.css";
 
-function UserIntroSkills() {
-  const { user, setUser } = useContext(UserContext);
+function UserIntroSkills({ userProfile }) {
   const [currentUserSkills, setCurrentUserSkills] = useState([]);
-  const [skillToDelete, setSkillToDelete] = useState("");
   const [addSkillsButton, setAddSkillsButton] = useState(false);
   const [skillToAdd, setSkillToAdd] = useState("");
   const [skillToAddDescription, setSkillToAddDescription] = useState("");
-  const [skillIDToAdd, setSkillIDToAdd] = useState("");
   const [allSkills, setAllSkills] = useState([]);
 
   const [existingSkillsToAdd, setExistingSkillsToAdd] = useState("");
@@ -18,7 +15,7 @@ function UserIntroSkills() {
   useEffect(() => {
     function getUserSkills() {
       return supabase.rpc("get_user_skills", {
-        userid: user.user_id,
+        userid: userProfile.user_id,
       });
     }
 
@@ -40,7 +37,7 @@ function UserIntroSkills() {
 
     let { data, error } = await supabase.rpc("delete_user_skill", {
       skill_id: skill_id,
-      user_id: user.user_id,
+      user_id: userProfile.user_id,
     });
   }
 
@@ -86,7 +83,7 @@ function UserIntroSkills() {
     const postExistingSkill = async () => {
       let { data, error } = await supabase.rpc("post_user_skill", {
         skill_id: newSkillId,
-        user_id: user.user_id,
+        user_id: userProfile.user_id,
       });
 
       setCurrentUserSkills([
@@ -97,19 +94,23 @@ function UserIntroSkills() {
     postExistingSkill();
   };
   return (
-    <div>
+    <div className="user_skills_container">
       {/* lists of skills */}
       {currentUserSkills.map((skill, index) => {
-        user.user_id;
+        userProfile.user_id;
         return (
-          <ul key={currentUserSkills.skill_id}>
-            <li>
+          <ul
+            key={currentUserSkills.skill_id}
+            className="user_skills_list_container"
+          >
+            <li className="user_skills_list_item">
               <p>{skill.skill_name}</p>
               <button
                 value={skill.skill_id}
                 onClick={() => handleOnDelete(index, skill.skill_id)}
               >
                 <img
+                  className="user_skills_list_delete_button"
                   src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
                   alt=""
                 />
@@ -118,22 +119,33 @@ function UserIntroSkills() {
           </ul>
         );
       })}
-      <button onClick={handleAddSkillButton}>add new skills</button>
+      <button
+        onClick={handleAddSkillButton}
+        className="add_existing_skills_button"
+      >
+        add new skills
+      </button>
       {/* form with dropdown menu */}
       {addSkillsButton ? (
-        <form onSubmit={handleSubmitExisitngSkill}>
-          <label>
-            Pick your skills
-            <select onChange={handleOnChangeExistingSkill}>
-              <option>skill</option>
-              {allSkills.map((skill) => {
-                return (
-                  <option value={skill.skill_name}>{skill.skill_name}</option>
-                );
-              })}
-            </select>
-          </label>
-          <input type="submit" value="Submit" />
+        <form
+          onSubmit={handleSubmitExisitngSkill}
+          className="add_existing_skills_form"
+        >
+          <label>Pick your skills </label>
+          <select onChange={handleOnChangeExistingSkill}>
+            <option>skill</option>
+            {allSkills.map((skill) => {
+              return (
+                <option value={skill.skill_name}>{skill.skill_name}</option>
+              );
+            })}
+          </select>
+
+          <input
+            type="submit"
+            value="Submit"
+            className="add_new_skills_button"
+          />
         </form>
       ) : (
         ""
@@ -141,21 +153,24 @@ function UserIntroSkills() {
       {/* additional skills to add */}
 
       {addSkillsButton ? (
-        <form onSubmit={handleOnSubmitNewSkill}>
+        <form onSubmit={handleOnSubmitNewSkill} className="add_new_skills_form">
           <label htmlFor="">or add new skill</label>
           <input
             type="text"
             value={skillToAdd}
             onChange={handleOnChangeNewSkill}
+            placeholder="name of your skills"
           />
           <label htmlFor=""></label>
-          <input
+          <textarea
             type="text"
             value={skillToAddDescription}
             onChange={handleOnChangeNewSkillDescription}
             placeholder="describe your skills"
           />
-          <button type="submit">add your skills</button>
+          <button type="submit" className="add_new_skills_button">
+            add your skills
+          </button>
         </form>
       ) : (
         ""

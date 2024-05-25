@@ -5,9 +5,9 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
+  const { user } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
 
   async function myProfile() {
     const id = await user.user_id;
@@ -25,6 +25,7 @@ function UserDropdown() {
   async function handleConnect() {
     const usernameToConnect = prompt("Username: (case sensitive) ");
     const userIdToConnect = await getUser(usernameToConnect);
+
     if (!!userIdToConnect) {
       let { data, error } = await supabase.rpc("post_chat", {
         chatname: usernameToConnect,
@@ -52,10 +53,7 @@ function UserDropdown() {
   return (
     <div className="user-dropdown">
       <button className="dropdown-button">
-        <img
-          className="profile-pic"
-          src="https://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png"
-        />
+        <img className="profile-pic" src={user.avatar_url} />
       </button>
       <div className="dropdown-content">
         <Link id="dropdown-link" onClick={myProfile}>

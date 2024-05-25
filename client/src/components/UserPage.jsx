@@ -3,25 +3,41 @@ import UserIntroSkills from "./UserIntroSkills";
 import UserPicture from "./UserPicture";
 import UserReviews from "./UserReviews";
 import UserShowcase from "./UserShowcase";
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
+
 import { UserContext } from "../contexts/UserContext";
+import "../styles/UserPage.css";
+
 
 import "../styles/UserPage.css";
 
 function UserPage() {
-  const { user, setUser } = useContext(UserContext);
   const [interestIsVisible, setInterestIsVisible] = useState(false);
   const [skillsIsVisible, setSkillsIsVisible] = useState(false);
   const [showcaseIsVisible, setShowcaseIsVisible] = useState(false);
+  const [userProfile, setUserProfile] = useState({});
+  const { id } = useParams();
 
-  const navigate = useNavigate();
+  const getUserById = async () => {
+    let { data, error } = await supabase.rpc("get_user_by_id", {
+      userid: id,
+    });
+    if (error) {
+      console.error(error);
+    } else {
+      return data;
+    }
+  };
 
-  // async function signOutUser() {
-  //   const { error } = await supabase.auth.signOut();
-  //   navigate("/");
-  // }
+  useEffect(() => {
+    if (id) {
+      getUserById().then((userData) => {
+        setUserProfile(userData);
+      });
+    }
+  }, [id]);
 
   const handleToggleInterest = () => {
     setInterestIsVisible(!interestIsVisible);
@@ -39,25 +55,54 @@ function UserPage() {
     <>
       <div className="UserPageComponent">
         {/* Components below can be wrapped in an expandable */}
+
         <UserPicture />
+        <div className="each_User_Page_Section">
+
+        <UserPicture
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+        />
         <div>
+
           <button className="buttonToggle" onClick={handleToggleInterest}>
-            User Interest {interestIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+            User Interest{" "}
+            <img
+              className={
+                interestIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
           </button>
 
-          {interestIsVisible && <UserInterests />}
+          {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
 
-        <div>
+        <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleSkills}>
-            User Skills {skillsIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+            User Skills{" "}
+            <img
+              className={
+                skillsIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
           </button>
-          {skillsIsVisible && <UserIntroSkills />}
+          {skillsIsVisible && <UserIntroSkills userProfile={userProfile} />}
         </div>
 
-        <div>
+        <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleShowcase}>
-            User Showcase {showcaseIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+            User Showcase{" "}
+            <img
+              className={
+                showcaseIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
           </button>
           {showcaseIsVisible && <UserShowcase />}
         </div>
