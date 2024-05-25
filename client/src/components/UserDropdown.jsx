@@ -6,13 +6,12 @@ import { UserContext } from "../contexts/UserContext";
 
 function UserDropdown() {
   const { user } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  let myId = "";
 
   async function myProfile() {
-    const authId = await supabase.auth.getUser();
-    myId = authId.data.user.id;
-    navigate(`/user/${myId}`);
+    const id = await user.user_id;
+    navigate(`/user/${id}`);
   }
 
   async function getUser(username) {
@@ -31,16 +30,24 @@ function UserDropdown() {
   async function handleConnect() {
     const usernameToConnect = prompt("Username: (case sensitive) ");
     const userIdToConnect = await getUser(usernameToConnect);
-    //Create and navigate to chat
-    //If chat exists navigate to it instead
 
-    console.log();
+    let { data, error } = await supabase.rpc("post_chat", {
+      chatname: usernameToConnect,
+    });
+    const chatId = data.chat_id;
+    const id = await user.user_id;
+    await supabase.from("UserChats").insert([
+      { chat_id: chatId, user_id: id },
+      { chat_id: chatId, user_id: userIdToConnect },
+    ]);
+    navigate(`/chat/${chatId}`);
   }
 
   async function loggingOut() {
     if (confirm("Are you sure you want to log out?")) {
       const { error } = await supabase.auth.signOut();
       navigate("/");
+      setUser({});
     }
   }
 

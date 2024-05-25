@@ -1,25 +1,20 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import supabase from "../../config/config_file";
-import { UserContext } from "../contexts/UserContext";
 import { useState } from "react";
 import "../styles/UserPage.css";
 
-function UserInterests() {
-  const { user, setUser } = useContext(UserContext);
+function UserInterests({ userProfile }) {
   const [currentUserInterest, setCurrentUserInterest] = useState([]);
-  const [interestToDelete, setInterestToDelete] = useState("");
   const [addInterestButton, setAddInterestButton] = useState(false);
   const [interestToAdd, setInterestToAdd] = useState("");
   const [interestToAddDescription, setInterestToAddDescription] = useState("");
-  const [interestIDToAdd, setinterestIDToAdd] = useState("");
   const [allInterest, setAllInterest] = useState([]);
-
   const [existingInterestToAdd, setExistingInterestToAdd] = useState("");
 
   useEffect(() => {
     function getUserInterest() {
       return supabase.rpc("get_user_interests", {
-        userid: user.user_id,
+        userid: userProfile.user_id,
       });
     }
 
@@ -41,7 +36,7 @@ function UserInterests() {
 
     let { data, error } = await supabase.rpc("delete_user_interest", {
       skill_id: skill_id,
-      user_id: user.user_id,
+      user_id: userProfile.user_id,
     });
   }
 
@@ -87,7 +82,7 @@ function UserInterests() {
     const postExistingInterest = async () => {
       let { data, error } = await supabase.rpc("post_user_interest", {
         skill_id: newInterestId,
-        user_id: user.user_id,
+        user_id: userProfile.user_id,
       });
 
       setCurrentUserInterest([
@@ -101,7 +96,7 @@ function UserInterests() {
     <div className="user_skills_container">
       {/* lists of interests */}
       {currentUserInterest.map((interest, index) => {
-        user.user_id;
+        userProfile.user_id;
         return (
           <ul
             key={currentUserInterest.skill_id}

@@ -3,26 +3,41 @@ import UserIntroSkills from "./UserIntroSkills";
 import UserPicture from "./UserPicture";
 import UserReviews from "./UserReviews";
 import UserShowcase from "./UserShowcase";
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
+
 import { UserContext } from "../contexts/UserContext";
 import "../styles/UserPage.css";
+
 
 import "../styles/UserPage.css";
 
 function UserPage() {
-  const { user, setUser } = useContext(UserContext);
   const [interestIsVisible, setInterestIsVisible] = useState(false);
   const [skillsIsVisible, setSkillsIsVisible] = useState(false);
   const [showcaseIsVisible, setShowcaseIsVisible] = useState(false);
+  const [userProfile, setUserProfile] = useState({});
+  const { id } = useParams();
 
-  const navigate = useNavigate();
+  const getUserById = async () => {
+    let { data, error } = await supabase.rpc("get_user_by_id", {
+      userid: id,
+    });
+    if (error) {
+      console.error(error);
+    } else {
+      return data;
+    }
+  };
 
-  // async function signOutUser() {
-  //   const { error } = await supabase.auth.signOut();
-  //   navigate("/");
-  // }
+  useEffect(() => {
+    if (id) {
+      getUserById().then((userData) => {
+        setUserProfile(userData);
+      });
+    }
+  }, [id]);
 
   const handleToggleInterest = () => {
     setInterestIsVisible(!interestIsVisible);
@@ -40,8 +55,16 @@ function UserPage() {
     <>
       <div className="UserPageComponent">
         {/* Components below can be wrapped in an expandable */}
+
         <UserPicture />
         <div className="each_User_Page_Section">
+
+        <UserPicture
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+        />
+        <div>
+
           <button className="buttonToggle" onClick={handleToggleInterest}>
             User Interest{" "}
             <img
@@ -53,7 +76,7 @@ function UserPage() {
             />
           </button>
 
-          {interestIsVisible && <UserInterests />}
+          {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
 
         <div className="each_User_Page_Section">
@@ -67,7 +90,7 @@ function UserPage() {
               alt=""
             />
           </button>
-          {skillsIsVisible && <UserIntroSkills />}
+          {skillsIsVisible && <UserIntroSkills userProfile={userProfile} />}
         </div>
 
         <div className="each_User_Page_Section">
