@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import supabase from "../../config/config_file";
+
+import { UserContext } from "../contexts/UserContext";
+import "../styles/UserPage.css";
+
 import "../styles/UserPage.css";
 
 function UserPicture({ userProfile, setUserProfile }) {

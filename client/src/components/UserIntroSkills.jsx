@@ -159,6 +159,7 @@ function UserIntroSkills({ userProfile }) {
             type="text"
             value={skillToAdd}
             onChange={handleOnChangeNewSkill}
+            placeholder="name of your skills"
           />
           <label htmlFor=""></label>
           <textarea
