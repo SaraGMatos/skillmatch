@@ -8,6 +8,7 @@ function ConnectionsPage() {
   const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [chats, setChats] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(()=>{
     setIsLoading(true)

@@ -10,7 +10,7 @@
 .messages-list {
     display:flex;
     flex-direction: column-reverse;
-    height: 82.5vh;
+    height: 80vh;
     overflow-y: scroll;
     padding-bottom: 20px;
     margin-top: 40px;
@@ -40,21 +40,23 @@
     font-size: calc(10px + 0.5vw)
 }
 .message-body {
-    font-size: calc(10px + 1.5vw)
+    font-size: calc(10px + 1.5vw);
 }
 
 .chat-header {
     display: flex;
     flex-direction: row;
+    padding: 10px;
+    justify-items: center;
+    align-items: center;
     width: 100vw;
     height: 5vh;
     position: fixed;
     background-color: rgb(72, 148, 72);
 }
 
-.chat-header > h2 {
-    text-align: center;
-    text-justify: center;
+.chat-header > h4 {
+    background-color: rgb(72, 148, 72) !important;
 }
 
 .chat-message-form {
