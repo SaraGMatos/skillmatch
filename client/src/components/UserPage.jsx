@@ -27,6 +27,10 @@ function UserPage() {
   };
 
   useEffect(() => {
+    setInterestIsVisible(false);
+    setSkillsIsVisible(false);
+    setShowcaseIsVisible(false);
+
     if (id) {
       getUserById().then((data) => {
         setUserProfile(data);
@@ -96,7 +100,7 @@ function UserPage() {
               alt=""
             />
           </button>
-          {showcaseIsVisible && <UserShowcase />}
+          {showcaseIsVisible && <UserShowcase userProfile={userProfile} />}
         </div>
         <UserReviews />
       </div>
