@@ -44,7 +44,7 @@ function ReviewsList({ date, message, reviewer, review_id, rate }) {
                     <p className="reviewRate">{rate} ⭐️</p>
                     <p className="reviewUsername">By {reviewerUsername}</p>
                     <p className="reviewDate">{date}</p>
-                    {user.user_id === reviewer && (<button onClick={()=> handleDelete()} className="reviewDeleteBtn">Delete</button>)}
+                    {user.user_id === reviewer && (<button onClick={() => handleDelete()} className="reviewDeleteBtn">❌</button>)}
                 </div>
             )}
         </>
