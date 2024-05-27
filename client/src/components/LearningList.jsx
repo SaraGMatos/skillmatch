@@ -66,7 +66,7 @@ function LearningList() {
     <>
       <FilterOptions />
       {hasMatches ? (
-        <ul>
+        <ul className="match-list">
           {matchedUsers.map((user) => {
             return (
               <MatchCard
