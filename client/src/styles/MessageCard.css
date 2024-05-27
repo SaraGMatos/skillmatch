@@ -19,13 +19,28 @@
 .message-card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
     width: 55vw;
     border-radius: 5px;
     padding: 5px;
 }
 
+.message-card > * {
+    background-color: rgba(250, 235, 215, 0);
+}
+
+.message-card > div {
+    flex-direction: column;
+}
+
+.message-card > div > * {
+    background-color: rgba(250, 235, 215, 0);
+}
+
 .my-chat {
     align-self: end;
+    flex-direction: row;
     margin: 5px;
     background-color: rgb(93, 185, 93);
 }

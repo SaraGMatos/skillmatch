@@ -48,6 +48,17 @@ export default function Chat() {
     fetchMessages();
   }
 
+  const deleteMessage = async (e, message_id)=> {
+
+    let { data, error } = await supabase
+    .rpc('delete_message', {
+      messageid: message_id
+    })
+    if (error) console.error(error)
+
+    fetchMessages();
+  }
+
   const joinRoom = () => {
     if (chatId !== "") socket.emit("join_room", chatId);
   };
@@ -56,6 +67,12 @@ export default function Chat() {
     e.preventDefault();
     socket.emit("send_message", { message, room: chatId });
     postMessage();
+  };
+
+  const removeMessage = (e, message_id) => {
+    e.preventDefault();
+    socket.emit("send_message", { message: "", room: chatId });
+    deleteMessage(e, message_id);
   };
 
 
@@ -81,7 +98,7 @@ export default function Chat() {
       <section id="chat-header" className="chat-header"> <h4>{chat.chat_name || headerTitle}</h4></section>
       <section id="messages-list" className="messages-list">
         {messages.toReversed().map((mess)=>{
-          return <MessageCard message={mess} users={users}/>
+          return <MessageCard message={mess} users={users} removeMessage={removeMessage}/>
         })}
       </section>
 
