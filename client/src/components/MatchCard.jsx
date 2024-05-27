@@ -46,18 +46,20 @@ function MatchCard({ avatar_url, username, user_id }) {
   return (
     <div className="match-card">
       <img src={avatar_url} />
-      <h4>{username}</h4>
-      {isLearningList ? null : (
-        <p>
-          Interests:{" "}
-          {userInterests.length !== 0
-            ? userInterests.toString().replace(/,/g, ", ")
-            : "Nothing here yet!"}
-        </p>
-      )}
-
-      <p>Skills: {userSkills.toString().replace(/,/g, ", ")}</p>
-      <Link to={`/user/${user_id}`}>GO</Link>
+      <div className="card-info">
+        <Link to={`/user/${user_id}`}>
+          <h4>{username}</h4>
+        </Link>
+        {isLearningList ? null : (
+          <p>
+            Interests:{" "}
+            {userInterests.length !== 0
+              ? userInterests.toString().replace(/,/g, ", ")
+              : "Nothing here yet!"}
+          </p>
+        )}
+        <p>Skills: {userSkills.toString().replace(/,/g, ", ")}</p>
+      </div>
     </div>
   );
 }
