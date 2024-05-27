@@ -12,6 +12,7 @@ function UserPage() {
   const [interestIsVisible, setInterestIsVisible] = useState(false);
   const [skillsIsVisible, setSkillsIsVisible] = useState(false);
   const [showcaseIsVisible, setShowcaseIsVisible] = useState(false);
+  const [reviewsIsVisible, setReviewsIsVisible] = useState(false)
   const [userProfile, setUserProfile] = useState({});
   const { id } = useParams();
 
@@ -44,6 +45,10 @@ function UserPage() {
 
   const handleToggleShowcase = () => {
     setShowcaseIsVisible(!showcaseIsVisible);
+  };
+
+  const handleToggleReviews = () => {
+    setReviewsIsVisible(!reviewsIsVisible);
   };
 
   return (
@@ -98,8 +103,24 @@ function UserPage() {
           </button>
           {showcaseIsVisible && <UserShowcase />}
         </div>
-        <UserReviews />
+
+        <div className="each_User_Page_Section">
+          <button className="buttonToggle" onClick={handleToggleReviews}>
+            User Reviews {" "}
+            <img
+              className={
+                reviewsIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
+          </button>
+          {reviewsIsVisible && <UserReviews />}
+        </div>
+
+
       </div>
+      
     </>
   );
 }
