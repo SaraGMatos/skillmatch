@@ -6,10 +6,6 @@ import UserShowcase from "./UserShowcase";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
-
-import { UserContext } from "../contexts/UserContext";
-import "../styles/UserPage.css";
-
 import "../styles/UserPage.css";
 
 function UserPage() {
@@ -32,8 +28,8 @@ function UserPage() {
 
   useEffect(() => {
     if (id) {
-      getUserById().then((userData) => {
-        setUserProfile(userData);
+      getUserById().then((data) => {
+        setUserProfile(data);
       });
     }
   }, [id]);
@@ -55,7 +51,6 @@ function UserPage() {
       <div className="UserPageComponent">
         {/* Components below can be wrapped in an expandable */}
 
-        <UserPicture />
         <div className="each_User_Page_Section">
           <UserPicture
             userProfile={userProfile}
@@ -103,7 +98,6 @@ function UserPage() {
           </button>
           {showcaseIsVisible && <UserShowcase />}
         </div>
-
         <UserReviews />
       </div>
     </>
