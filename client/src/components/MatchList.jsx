@@ -72,13 +72,20 @@ function MatchList() {
         )
     );
 
+    const mapFromMatches = new Map(
+      matches.map((match) => {
+        return [match.user_id, match];
+      })
+    );
+    const uniqueMatches = [...mapFromMatches.values()];
+
     if (matches.length === 0) {
       setHasMatches(false);
     } else {
       setHasMatches(true);
     }
 
-    return matches;
+    return uniqueMatches;
   };
 
   useEffect(() => {
