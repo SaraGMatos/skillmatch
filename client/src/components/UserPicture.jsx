@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import supabase from "../../config/config_file";
 import "../styles/UserPage.css";
 
 function UserPicture({ userProfile, setUserProfile }) {
   const [newProfileImage, setNewProfileImage] = useState("");
   const [isAlertImageURL, setIsAlertImageURL] = useState(false);
+  const { user } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,12 +37,14 @@ function UserPicture({ userProfile, setUserProfile }) {
     <>
       <div className="UserPageComponent">
         <img src={userProfile.avatar_url} alt="" />
-        <button className="editButton" onClick={handleOnClick}>
-          <img
-            src="https://static.thenounproject.com/png/2473159-200.png"
-            alt=""
-          />
-        </button>
+        {userProfile.user_id === user.user_id ? (
+          <button className="editButton" onClick={handleOnClick}>
+            <img
+              src="https://static.thenounproject.com/png/2473159-200.png"
+              alt=""
+            />
+          </button>
+        ) : null}
         {isAlertImageURL ? (
           <form onSubmit={handleSubmit} className="NewProfilePhotForm">
             <label htmlFor="newUrl">new photo url</label>
