@@ -29,3 +29,33 @@
 .filter-options-container {
   margin-top: 100px;
 }
+
+.match-list {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-card {
+  display: flex;
+  width: 80%;
+  margin: 15px;
+  border: solid blue 2px;
+  padding: 10px;
+  justify-content: flex-start;
+}
+
+.match-card img {
+  margin-right: 25px;
+  min-width: 70px;
+  height: 60px;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 40%;
+}
+
+.match-card p {
+  flex-wrap: wrap;
+}

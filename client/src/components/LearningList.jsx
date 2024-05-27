@@ -44,7 +44,14 @@ function LearningList() {
       }
     }
 
-    return usersThatSatisfyInterest;
+    const mapFromLearningList = new Map(
+      usersThatSatisfyInterest.map((match) => {
+        return [match.user_id, match];
+      })
+    );
+    const uniqueMatches = [...mapFromLearningList.values()];
+
+    return uniqueMatches;
   };
 
   useEffect(() => {
@@ -59,7 +66,7 @@ function LearningList() {
     <>
       <FilterOptions />
       {hasMatches ? (
-        <ul>
+        <ul className="match-list">
           {matchedUsers.map((user) => {
             return (
               <MatchCard
