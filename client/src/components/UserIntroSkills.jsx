@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import supabase from "../../config/config_file";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import "../styles/UserPage.css";
 
 function UserIntroSkills({ userProfile }) {
+  const { user } = useContext(UserContext);
+  const isLoggedUser = userProfile.user_id === user.user_id;
   const [currentUserSkills, setCurrentUserSkills] = useState([]);
   const [addSkillsButton, setAddSkillsButton] = useState(false);
   const [skillToAdd, setSkillToAdd] = useState("");
@@ -105,26 +109,30 @@ function UserIntroSkills({ userProfile }) {
           >
             <li className="user_skills_list_item">
               <p>{skill.skill_name}</p>
-              <button
-                value={skill.skill_id}
-                onClick={() => handleOnDelete(index, skill.skill_id)}
-              >
-                <img
-                  className="user_skills_list_delete_button"
-                  src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
-                  alt=""
-                />
-              </button>
+              {isLoggedUser && (
+                <button
+                  value={skill.skill_id}
+                  onClick={() => handleOnDelete(index, skill.skill_id)}
+                >
+                  <img
+                    className="user_skills_list_delete_button"
+                    src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
+                    alt=""
+                  />
+                </button>
+              )}
             </li>
           </ul>
         );
       })}
-      <button
-        onClick={handleAddSkillButton}
-        className="add_existing_skills_button"
-      >
-        add new skills
-      </button>
+      {isLoggedUser && (
+        <button
+          onClick={handleAddSkillButton}
+          className="add_existing_skills_button"
+        >
+          add new skills
+        </button>
+      )}
       {/* form with dropdown menu */}
       {addSkillsButton ? (
         <form
