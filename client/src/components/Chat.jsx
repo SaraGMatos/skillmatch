@@ -4,17 +4,23 @@ import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
 import '../styles/MessageCard.css'
 import MessageCard from "./MessageCard";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 
 const socket = io.connect("https://skillmatch-production.up.railway.app/");
 
 export default function Chat() {
+  const { users, chat } = useLocation().state
   const { id } = useParams();
   const { user } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const [chat, setChat] = useState();
   const [isLoading, setIsLoading] = useState(false);
+
+  let headerTitle = `Chat with ${users[0].username}`;
+
+  for (let index = 1; index < users.length; index++) {
+    headerTitle += `, ${users[index].username}`
+  }
 
   const chatId = id;
 
@@ -72,10 +78,10 @@ export default function Chat() {
 
   return (
     <div className="chat">
-      <section id="chat-header" className="chat-header"> <h4>Chat ID: {chatId} </h4></section>
+      <section id="chat-header" className="chat-header"> <h4>{chat.chat_name || headerTitle}</h4></section>
       <section id="messages-list" className="messages-list">
         {messages.toReversed().map((mess)=>{
-          return <MessageCard message={mess}/>
+          return <MessageCard message={mess} users={users}/>
         })}
       </section>
 

@@ -42,7 +42,7 @@ function MainPage() {
 
   return (
     <>
-      <FilterOptions />
+      <FilterOptions className="filter-options-container" />
       <MatchList />
     </>
   );
