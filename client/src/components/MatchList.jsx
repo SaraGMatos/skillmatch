@@ -99,7 +99,7 @@ function MatchList() {
   return (
     <>
       {hasMatches ? (
-        <ul>
+        <ul className="match-list">
           {matchedUsers.map((user) => {
             return (
               <MatchCard
