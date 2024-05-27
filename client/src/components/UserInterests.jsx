@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import supabase from "../../config/config_file";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 import "../styles/UserPage.css";
 
 function UserInterests({ userProfile }) {
+  const { user } = useContext(UserContext);
+  const isLoggedUser = userProfile.user_id === user.user_id;
   const [currentUserInterest, setCurrentUserInterest] = useState([]);
   const [addInterestButton, setAddInterestButton] = useState(false);
   const [interestToAdd, setInterestToAdd] = useState("");
@@ -104,26 +108,30 @@ function UserInterests({ userProfile }) {
           >
             <li className="user_skills_list_item">
               <p>{interest.skill_name}</p>
-              <button
-                value={interest.skill_id}
-                onClick={() => handleOnDelete(index, interest.skill_id)}
-              >
-                <img
-                  className="user_skills_list_delete_button"
-                  src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
-                  alt=""
-                />
-              </button>
+              {isLoggedUser && (
+                <button
+                  value={interest.skill_id}
+                  onClick={() => handleOnDelete(index, interest.skill_id)}
+                >
+                  <img
+                    className="user_skills_list_delete_button"
+                    src="https://cdn-icons-png.flaticon.com/512/3687/3687412.png"
+                    alt=""
+                  />
+                </button>
+              )}
             </li>
           </ul>
         );
       })}
-      <button
-        onClick={handleAddInterestButton}
-        className="add_existing_skills_button"
-      >
-        add new interests
-      </button>
+      {isLoggedUser && (
+        <button
+          onClick={handleAddInterestButton}
+          className="add_existing_skills_button"
+        >
+          add new interests
+        </button>
+      )}
       {/* form with dropdown menu */}
       {addInterestButton ? (
         <form
