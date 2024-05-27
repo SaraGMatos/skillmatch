@@ -9,7 +9,7 @@ function UserShowcase({ userProfile }) {
   const [newShowcase, setNewShowcase] = useState("");
   const [currentShowcase, setCurrentShowcase] = useState(userProfile.showcase);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
-  console.log(user.user_id);
+  const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ function UserShowcase({ userProfile }) {
   return (
     <div className="showcase-container">
       <section>{currentShowcase}</section>
-      {userProfile.user_id === user.user_id ? (
+      {isLoggedUser && (
         <>
           <button
             onClick={() => {
@@ -60,7 +60,7 @@ function UserShowcase({ userProfile }) {
             </button>
           </form>{" "}
         </>
-      ) : null}
+      )}
     </div>
   );
 }
