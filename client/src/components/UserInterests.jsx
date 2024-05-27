@@ -10,8 +10,7 @@ function UserInterests() {
   const [addSkillsButton, setAddSkillsButton] = useState(false);
   const [skillToAdd, setSkillToAdd] = useState("");
   const [skillToAddDescription, setSkillToAddDescription] = useState("");
-  console.log(user);
-  console.log(currentUserSkills);
+  
 
   useEffect(() => {
     async function getUserSkills() {
@@ -19,7 +18,7 @@ function UserInterests() {
         userid: user.user_id,
       });
       setCurrentUserSkills(data);
-      console.log(currentUserSkills);
+      
     }
     getUserSkills();
   }, []);
@@ -37,7 +36,7 @@ function UserInterests() {
 
   const handleOnChangeNewSkillDescription = (e) => {
     setSkillToAddDescription(e.target.value);
-    console.log(skillToAddDescription);
+    
   };
 
   const handleAddSkillButton = () => {
@@ -47,10 +46,8 @@ function UserInterests() {
   const handleOnSubmitNewSkill = async (e) => {
     e.preventDefault();
     let { data, error } = await supabase.rpc("get_skills");
-    console.log(data);
+    
     const checkIfSkillExists = data.some((skill) => {
-      console.log(skill.skill_name);
-      console.log(skillToAdd);
       return skill.skill_name === skillToAdd;
     });
 

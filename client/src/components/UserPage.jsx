@@ -8,13 +8,16 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
 import { UserContext } from "../contexts/UserContext";
 
+
 import "../styles/UserPage.css";
 
 function UserPage() {
+  
   const { user, setUser } = useContext(UserContext);
   const [interestIsVisible, setInterestIsVisible] = useState(false);
   const [skillsIsVisible, setSkillsIsVisible] = useState(false);
   const [showcaseIsVisible, setShowcaseIsVisible] = useState(false);
+  const [reviewsIsVisible, setReviewsIsVisible] = useState(false)
 
   const navigate = useNavigate();
 
@@ -34,6 +37,10 @@ function UserPage() {
   const handleToggleShowcase = () => {
     setShowcaseIsVisible(!showcaseIsVisible);
   };
+
+  const handleToggleReviews = () => {
+    setReviewsIsVisible(!reviewsIsVisible)
+  }
 
   return (
     <>
@@ -62,7 +69,13 @@ function UserPage() {
           {showcaseIsVisible && <UserShowcase />}
         </div>
 
-        <UserReviews />
+        <div>
+          <button className="buttonToggle" onClick={handleToggleReviews}>
+            User Reviews {reviewsIsVisible ? <p>&uarr;</p> : <p> &darr;</p>}
+          </button>
+          {reviewsIsVisible && <UserReviews />}
+        </div>
+        
       </div>
     </>
   );
