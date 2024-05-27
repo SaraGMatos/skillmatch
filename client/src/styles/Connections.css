@@ -4,7 +4,9 @@
 
 .connection-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-content: center;
+    justify-content: left;
     width: 80vw;
     border-radius: 5px;
     padding: 5px;
@@ -15,6 +17,23 @@
     background-color: rgb(127, 255, 176);
 }
 
+.connection-card > * {
+    background-color: rgb(127, 255, 176);
+}
+
+.connection-card > img {
+    border-radius: 5px;
+    width: 20vw;
+    height: 5.5vh;
+    margin-right: 10px;
+}
+
 .connections-container {
     margin-top: 30px;
+    padding: 5px;
+}
+
+.connection-card-group {
+    display: flex;
+    flex-direction: row;
 }

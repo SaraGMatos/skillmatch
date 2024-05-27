@@ -8,7 +8,19 @@ function ConnectionsPage() {
   const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [chats, setChats] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [showDelete, setShowDelete] = useState(false);
+  const [refreshPage, setRefreshPage] = useState(false)
+
+  const deleteChat = async (chat_id)=> {
+
+    let { data, error } = await supabase
+    .rpc('delete_chat', {
+      chatid: chat_id
+    })
+    if (error) console.error(error)
+
+    setRefreshPage(!refreshPage)
+  }
 
   useEffect(()=>{
     setIsLoading(true)
@@ -20,15 +32,19 @@ function ConnectionsPage() {
       setIsLoading(false)
     })
 
-  }, [])
+  }, [refreshPage])
 
   if (isLoading) return <h2>Loading...</h2>
 
   return (
     <div className="connections-container">
-    {chats.map((chat)=>{
-      return <ConnectionCard chat={chat}/>
-    })}
+      {chats.map((chat)=>{
+        return <div className="connection-card-group">
+          <ConnectionCard chat={chat}/>
+          {showDelete ? <button onClick={()=>{deleteChat(chat.chat_id)}}>X</button> : null}
+        </div>
+      })}
+      <button onClick={()=>{setShowDelete(!showDelete)}}>{showDelete ? 'Hide' : 'Delete chats'}</button>
     </div>
   );
 }
