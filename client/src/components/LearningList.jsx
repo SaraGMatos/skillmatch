@@ -66,7 +66,12 @@ function LearningList() {
   }, [user]);
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <>
+        <FilterOptions />
+        <Loading />
+      </>
+    );
   }
 
   return (
