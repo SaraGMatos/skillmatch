@@ -21,8 +21,7 @@ function Footer() {
           </Link>
           <Link to="/connections">
             <button className="connection_button">
-              <p>Connections</p>{" "}
-              <img src="../src/graphics/arrow_button.png" alt="" />
+              <img src="../src/graphics/envelope.svg" alt="" />
             </button>
           </Link>
         </div>
