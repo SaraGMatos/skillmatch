@@ -18,19 +18,20 @@ h6 {
   overflow-wrap: break-word;
 }
 
+.user_page {
+  padding-bottom: 80px;
+}
+
 .UserPageComponent {
   position: relative;
   width: 80vw;
   max-width: 600px;
-
-  margin: auto;
-  background-color: #d3eaff;
 }
 
 .UserPageComponent > img {
   display: block;
   max-width: 100%;
-  border: 2px black solid;
+
   margin: auto;
 }
 
@@ -43,19 +44,32 @@ h6 {
 .editButton > img {
   background: none;
 }
+.description-container {
+  margin: 20px;
+  text-align: center;
+}
+
+.description_button {
+  background-color: #e39b7d;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 5px auto 10px auto;
+  color: white;
+  font-size: 0.8em;
+}
 
 .buttonToggle {
-  width: 100%;
+  width: 90%;
   background-color: #ececec;
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 2em;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-top: 1em;
+  margin-left: 1em;
 }
 
 .arrow_button_right {
@@ -139,8 +153,5 @@ h6 {
 }
 
 .each_User_Page_Section {
-  display: flex;
-  flex-direction: column;
-
-  background-color: #d3eaff;
+  background-color: #ececec;
 }

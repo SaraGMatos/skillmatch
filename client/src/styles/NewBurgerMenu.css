@@ -1,24 +1,35 @@
 .main-container {
-    display: flex;
-    flex-direction: column;
-    position:fixed;
-    margin-top: 2%;
-    margin-left: 2%;
-    top: 0;
-    left: 0;
+  position: relative;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  /* position: fixed;
+  margin-top: 2%;
+  margin-left: 2%; */
+  /* top: 0;
+  left: 0; */
 }
 
-.main-container > button {
-    width: 15vw;
-    height: 15vw;
-}
+/* .main-container > button { */
+/* width: 15vw;
+  height: 15vw; */
+
+/* } */
 
 .show-menu {
-    display: flex;
-    flex-direction: column;
-    background-color: aquamarine;
+  position: absolute;
+  width: 100px;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ececec;
+  border-radius: 5px;
+  margin: auto;
+  box-shadow: 2px 2px 5px black;
 }
 
 .menu-item {
-    margin: 10px;
+  margin: 10px;
+  text-decoration: none;
+  color: black;
 }

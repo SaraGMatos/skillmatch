@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import supabase from "../../config/config_file";
+import "../styles/UserPage.css";
 
 function UserDescription({ userProfile }) {
   const { user } = useContext(UserContext);
@@ -43,6 +44,7 @@ function UserDescription({ userProfile }) {
       {isLoggedUser && (
         <>
           <button
+            className="description_button"
             onClick={() => {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
@@ -67,7 +69,7 @@ function UserDescription({ userProfile }) {
               onChange={handleChange}
               defaultValue={currentDescription}
             />
-            <button className="descriptionSubmit" type="submit">
+            <button className="description_button" type="submit">
               Submit change
             </button>
           </form>{" "}

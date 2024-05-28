@@ -1,8 +1,8 @@
 .filter-options-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   border: none;
 }
 
@@ -13,4 +13,10 @@
 
   color: white;
   font-size: 1.1em;
+}
+
+.filter_buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
