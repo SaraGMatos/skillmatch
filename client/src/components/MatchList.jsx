@@ -2,11 +2,13 @@ import MatchCard from "./MatchCard";
 import supabase from "../../config/config_file";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import Loading from "./Loading";
 
 function MatchList() {
   const { user } = useContext(UserContext);
   const [matchedUsers, setMatchedUsers] = useState([]);
   const [hasMatches, setHasMatches] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getUserInterests = async () => {
     let { data, error } = await supabase.rpc("get_user_interests", {
@@ -92,9 +94,14 @@ function MatchList() {
     if (user.user_id) {
       getMatchedUsers().then((data) => {
         setMatchedUsers(data);
+        setIsLoading(false);
       });
     }
   }, [user]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
