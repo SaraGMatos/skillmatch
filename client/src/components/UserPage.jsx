@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
 import "../styles/UserPage.css";
+import UserDescription from "./UserDescription";
 
 function UserPage() {
   const [interestIsVisible, setInterestIsVisible] = useState(false);
@@ -65,24 +66,27 @@ function UserPage() {
             userProfile={userProfile}
             setUserProfile={setUserProfile}
           />
-          <div className="each_User_Page_Section">
-            <button className="buttonToggle" onClick={handleToggleInterest}>
-              User Interest{" "}
-              <img
-                className={
-                  interestIsVisible ? "arrow_button_down" : "arrow_button_right"
-                }
-                src="../src/graphics/arrow_button.png"
-                alt=""
-              />
-            </button>
-          </div>
-          {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
+        <UserDescription userProfile={userProfile} />
+        <div className="each_User_Page_Section">
+          <button className="buttonToggle" onClick={handleToggleInterest}>
+            User Interest
+            <img
+              className={
+                interestIsVisible ? "arrow_button_down" : "arrow_button_right"
+              }
+              src="../src/graphics/arrow_button.png"
+              alt=""
+            />
+          </button>
+        </div>
+        {interestIsVisible && <UserInterests userProfile={userProfile} />}
+
+        <div className="each_User_Page_Section"></div>
 
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleSkills}>
-            User Skills{" "}
+            User Skills
             <img
               className={
                 skillsIsVisible ? "arrow_button_down" : "arrow_button_right"
@@ -96,7 +100,7 @@ function UserPage() {
 
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleShowcase}>
-            User Showcase{" "}
+            User Showcase
             <img
               className={
                 showcaseIsVisible ? "arrow_button_down" : "arrow_button_right"
@@ -110,7 +114,7 @@ function UserPage() {
 
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleReviews}>
-            User Reviews{" "}
+            User Reviews
             <img
               className={
                 reviewsIsVisible ? "arrow_button_down" : "arrow_button_right"

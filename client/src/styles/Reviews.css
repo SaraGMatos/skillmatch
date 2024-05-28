@@ -1,122 +1,123 @@
 .review-container {
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 25%, 25%, 25%, 25%;
-    grid-template-rows: 20%, 20%, 20%, 20%, 20%;
-    width: 90%;
-    padding: 5px;
-    margin-top: 20px;
-    padding-left: 2px;
-    background-color: #d3eaff;;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 25%, 25%, 25%, 25%;
+  grid-template-rows: 20%, 20%, 20%, 20%, 20%;
+  width: 90%;
+  padding: 5px;
+  margin-top: 20px;
+  padding-left: 2px;
+  background-color: #d3eaff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .reviewRate {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    margin-left: 5px;
-    font-weight: bold;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  margin-left: 5px;
+  font-weight: bold;
 }
 .reviewDate {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    margin-left: 2px;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  margin-left: 2px;
 }
 .reviewMessage {
-    
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end:4;
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-bottom: 5px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 .reviewsUl {
-    width: 100%;
-    height: 300px;
-    display: block;
-    list-style-type: none;
-    overflow-y: scroll;
+  width: 100%;
+  height: 300px;
+  display: block;
+  list-style-type: none;
+  overflow-y: scroll;
 }
 
- .reviewUsername {
-        grid-column-start: 1;
-        grid-row-start: 5;
-        margin-top: 10px;
-        margin-left: 5px;
-        font-weight: bold;
-    }
+.reviewUsername {
+  grid-column-start: 1;
+  grid-row-start: 5;
+  margin-top: 10px;
+  margin-left: 5px;
+  font-weight: bold;
+}
 
 .reviewDeleteBtn {
-    grid-column-start: 3;
-    grid-row-start: 5;
-    margin-right: -60px;
+  grid-column-start: 3;
+  grid-row-start: 5;
+  margin-right: -60px;
 }
 
 .addReviewBtn {
-   padding-bottom: 10px;
-   padding-left: 10px;
-   font-size: 20px;
+  padding: 20px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: 20px;
 }
 
-.reviewForm-container{
-    display: grid;
-    grid-template-columns: 25%, 25%, 25%, 25%;
-    grid-template-rows: 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%;
-    width: 100%;
-    height: 10rem;
-    border-bottom: rgb(16, 16, 16) solid 1px;
+.reviewForm-container {
+  display: grid;
+  grid-template-columns: 25%, 25%, 25%, 25%;
+  grid-template-rows: 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%, 10%;
+  width: 100%;
+  height: 10rem;
+  border-bottom: rgb(16, 16, 16) solid 1px;
 }
 
-.reviewHeader{
-    grid-row-start: 1;
-    grid-row-end: 2;
-    font-size: 15px;
-    width: 80%;
-    margin-left: 30%;
+.reviewHeader {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 15px;
+  width: 80%;
+  margin-left: 30%;
 }
 
-.reviewMessageInput{
-    overflow-y: scroll;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 2;
-    grid-row-end:7;
-    margin-top: -40px;
-    margin-left: 5%;
-    width:90%;
-    height:90%;
-    border-radius: 5px;
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+.reviewMessageInput {
+  overflow-y: scroll;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 7;
+  margin-top: -40px;
+  margin-left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 
-.ratingSection{
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 8;
-    margin-left: 10px;
+.ratingSection {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 8;
+  margin-left: 10px;
 }
 
-.reviewBtns{
-    display: inline;
-    margin-left: 60px;
-    grid-column-start: 3;
-    grid-column-end: 5;
-    grid-row-start: 8;
-   
+.reviewBtns {
+  display: inline;
+  margin-left: 60px;
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 8;
 }
-.reviewSubmitBtn{
+.reviewSubmitBtn {
   background-color: #e39b7d;
   border-radius: 5px;
   color: white;
   font-size: 1.1em;
 }
 
-.reviewCancelBtn{
-    margin-left: 10px;
-    border: black solid 1px;
-    border-radius: 5px;
+.reviewCancelBtn {
+  margin-left: 10px;
+  border: black solid 1px;
+  border-radius: 5px;
 }
