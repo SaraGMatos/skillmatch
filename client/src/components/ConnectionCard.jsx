@@ -7,6 +7,7 @@ import "../styles/Connections.css";
 function ConnectionCard({ chat }) {
   const { user } = useContext(UserContext);
   const [users, setUsers] = useState([]);
+  const [unfilteredUsers, setUnfilteredUsers] = useState ([])
   const [isLoading, setIsLoading] = useState(false);
   const [cardTitle, setCardTitle] = useState(`Chat with `);
 
@@ -16,6 +17,7 @@ function ConnectionCard({ chat }) {
     supabase
       .rpc("get_users_by_chat_id", { chatid: chat.chat_id })
       .then(({ data }) => {
+        setUnfilteredUsers(data)
         const filteredUsers = data.filter((item) => {
           return item.user_id !== user.user_id;
         });
@@ -48,7 +50,7 @@ function ConnectionCard({ chat }) {
       <Link
         className="chat_intro"
         to={`/chat/${chat.chat_id}`}
-        state={{ users, chat }}
+        state={{ users, unfilteredUsers, chat }}
       >
         {chat.chat_name || cardTitle}
       </Link>
