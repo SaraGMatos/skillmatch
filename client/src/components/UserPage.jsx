@@ -12,7 +12,7 @@ function UserPage() {
   const [interestIsVisible, setInterestIsVisible] = useState(false);
   const [skillsIsVisible, setSkillsIsVisible] = useState(false);
   const [showcaseIsVisible, setShowcaseIsVisible] = useState(false);
-  const [reviewsIsVisible, setReviewsIsVisible] = useState(false)
+  const [reviewsIsVisible, setReviewsIsVisible] = useState(false);
   const [userProfile, setUserProfile] = useState({});
   const { id } = useParams();
 
@@ -65,7 +65,7 @@ function UserPage() {
             userProfile={userProfile}
             setUserProfile={setUserProfile}
           />
-          <div>
+          <div className="each_User_Page_Section">
             <button className="buttonToggle" onClick={handleToggleInterest}>
               User Interest{" "}
               <img
@@ -110,7 +110,7 @@ function UserPage() {
 
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleReviews}>
-            User Reviews {" "}
+            User Reviews{" "}
             <img
               className={
                 reviewsIsVisible ? "arrow_button_down" : "arrow_button_right"
@@ -121,10 +121,7 @@ function UserPage() {
           </button>
           {reviewsIsVisible && <UserReviews />}
         </div>
-
-
       </div>
-      
     </>
   );
 }
