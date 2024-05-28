@@ -22,14 +22,15 @@ h6 {
   position: relative;
   width: 80vw;
   max-width: 600px;
-  border: 1px red solid;
+
   margin: auto;
+  background-color: #d3eaff;
 }
 
 .UserPageComponent > img {
   display: block;
   max-width: 100%;
-
+  border: 2px black solid;
   margin: auto;
 }
 
