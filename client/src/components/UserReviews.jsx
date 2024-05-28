@@ -34,11 +34,11 @@ function UserReviews() {
 
   return (
     <>
-      {!isAddActive && (<button onClick={handleToggleClick}>➕</button>)}
+      {!isAddActive && (<button onClick={handleToggleClick} className="addReviewBtn">➕</button>)}
       {isAddActive && (
         <>
-        <button onClick={handleToggleClick}>➖</button>
-          <ReviewForm setIsAddActive={setIsAddActive} id={id} setUserReviews={setUserReviews} />
+        <button onClick={handleToggleClick} className="addReviewBtn">➖</button>
+          <ReviewForm setIsAddActive={setIsAddActive} id={id} setUserReviews={setUserReviews} userReviews={userReviews} />
 
         </>
       )}
