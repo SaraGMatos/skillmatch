@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import Loading from "./Loading";
 
-function MatchList({ currentSortBy, setCurrentSortBy }) {
+function MatchList({ currentSortBy }) {
   const { user } = useContext(UserContext);
   const [matchedUsers, setMatchedUsers] = useState([]);
   const [hasMatches, setHasMatches] = useState(false);
@@ -145,7 +145,7 @@ function MatchList({ currentSortBy, setCurrentSortBy }) {
           <p>Sorry, you don't have any matches at the moment!</p>
         )
       ) : (
-        <Loading/>
+        <Loading />
       )}
     </>
   );

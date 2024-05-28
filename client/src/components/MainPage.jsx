@@ -43,10 +43,7 @@ function MainPage() {
   return (
     <>
       <FilterOptions setCurrentSortBy={setCurrentSortBy} />
-      <MatchList
-        currentSortBy={currentSortBy}
-        setCurrentSortBy={setCurrentSortBy}
-      />
+      <MatchList currentSortBy={currentSortBy} />
     </>
   );
 }
