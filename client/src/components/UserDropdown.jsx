@@ -36,7 +36,7 @@ function UserDropdown() {
         { chat_id: chatId, user_id: id },
         { chat_id: chatId, user_id: userIdToConnect.user_id },
       ]);
-      navigate(`/chat/${chatId}`);
+      navigate(`/connections`);
     } else {
       alert("Username doesn't exist!");
     }
