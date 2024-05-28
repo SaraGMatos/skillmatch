@@ -9,6 +9,7 @@ function UserShowcase({ userProfile }) {
   const [newShowcase, setNewShowcase] = useState("");
   const [currentShowcase, setCurrentShowcase] = useState(userProfile.showcase);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleOnSubmit = async (e) => {
@@ -22,6 +23,7 @@ function UserShowcase({ userProfile }) {
       console.log(error);
     }
     setIsEditDisabled(true);
+    setIsHidden(true);
     setCurrentShowcase(newShowcase);
   };
 
@@ -38,14 +40,16 @@ function UserShowcase({ userProfile }) {
             onClick={() => {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
+                setIsHidden(false);
               } else {
                 setIsEditDisabled(true);
+                setIsHidden(true);
               }
             }}
           >
             Edit your showcase
           </button>
-          <form onSubmit={handleOnSubmit}>
+          <form hidden={isHidden} onSubmit={handleOnSubmit}>
             <textarea
               disabled={isEditDisabled}
               className="textarea"
