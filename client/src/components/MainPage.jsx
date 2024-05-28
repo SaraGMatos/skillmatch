@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import LearningList from "./LearningList";
 
 function MainPage() {
   const { setUser } = useContext(UserContext);
+  const [currentSortBy, setCurrentSortBy] = useState("");
   const navigate = useNavigate();
+  console.log(currentSortBy);
 
   useEffect(() => {
     async function getUserData() {
@@ -42,8 +43,11 @@ function MainPage() {
 
   return (
     <>
-      <FilterOptions className="filter-options-container" />
-      <MatchList />
+      <FilterOptions setCurrentSortBy={setCurrentSortBy} />
+      <MatchList
+        currentSortBy={currentSortBy}
+        setCurrentSortBy={setCurrentSortBy}
+      />
     </>
   );
 }

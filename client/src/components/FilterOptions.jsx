@@ -3,7 +3,7 @@ import { UserContext } from "../contexts/UserContext";
 import { useContext, useEffect, useState } from "react";
 import supabase from "../../config/config_file";
 
-function FilterOptions() {
+function FilterOptions({ setCurrentSortBy }) {
   const [interests, setInterests] = useState([]);
   const { user } = useContext(UserContext);
 
@@ -29,7 +29,14 @@ function FilterOptions() {
 
       <div className="filter-options-dropdown-container">
         <label htmlFor="filter">Choose your desired skill:</label>
-        <select name="filter" id="filter">
+        <select
+          name="filter"
+          id="filter"
+          onChange={(event) => {
+            setCurrentSortBy(event.target.value);
+          }}
+        >
+          <option value="">Select</option>
           {interests.map((interest) => {
             return (
               <option key={interest.skill_id} value={interest.skill_name}>

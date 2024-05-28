@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import Loading from "./Loading";
 
-function MatchList() {
+function MatchList({ currentSortBy, setCurrentSortBy }) {
   const { user } = useContext(UserContext);
   const [matchedUsers, setMatchedUsers] = useState([]);
   const [hasMatches, setHasMatches] = useState(false);
@@ -91,35 +91,61 @@ function MatchList() {
   };
 
   useEffect(() => {
-    if (user.user_id) {
-      getMatchedUsers().then((data) => {
-        setMatchedUsers(data);
-        setIsLoading(false);
-      });
-    }
-  }, [user]);
+    setIsLoading(true);
+    setHasMatches(true);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+    if (user.user_id) {
+      getMatchedUsers()
+        .then((data) => {
+          setMatchedUsers(data);
+        })
+        .then(() => {
+          if (currentSortBy.length > 0) {
+            supabase
+              .rpc("get_skill_id_by_name", {
+                skillname: currentSortBy,
+              })
+              .then(({ data }) => {
+                supabase
+                  .rpc("get_users_by_skill", {
+                    skillid: data,
+                  })
+                  .then(({ data }) => {
+                    setMatchedUsers(data);
+                    if (data.length === 0) {
+                      setHasMatches(false);
+                    }
+                    setIsLoading(false);
+                  });
+              });
+          } else {
+            setIsLoading(false);
+          }
+        });
+    }
+  }, [user, currentSortBy]);
 
   return (
     <>
-      {hasMatches ? (
-        <ul className="match-list">
-          {matchedUsers.map((user) => {
-            return (
-              <MatchCard
-                avatar_url={user.avatar_url}
-                username={user.username}
-                user_id={user.user_id}
-                key={user.user_id}
-              />
-            );
-          })}
-        </ul>
+      {!isLoading ? (
+        hasMatches ? (
+          <ul className="match-list">
+            {matchedUsers.map((user) => {
+              return (
+                <MatchCard
+                  avatar_url={user.avatar_url}
+                  username={user.username}
+                  user_id={user.user_id}
+                  key={user.user_id}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <p>Sorry, you don't have any matches at the moment!</p>
+        )
       ) : (
-        <p>Sorry, you don't have any matches at the moment!</p>
+        <Loading/>
       )}
     </>
   );
