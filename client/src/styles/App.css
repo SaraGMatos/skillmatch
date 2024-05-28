@@ -1,5 +1,6 @@
 body {
   min-height: 100%;
+
   display: flex;
   flex-direction: column;
   background-color: #d3eaff;
@@ -54,39 +55,46 @@ body {
   background-color: #e39b7d;
 }
 
-.filter-options-container {
-  margin-top: 100px;
-}
-
 .match-list {
-  padding: 0;
-  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding-bottom: 80px;
 }
 
 .match-card {
+  width: 90%;
+  max-width: 600px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid rgb(201, 201, 201);
+  background-color: #ececec;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.match_card_photo {
+  border-radius: 50%;
+  border: solid grey 1px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  object-fit: cover;
+}
+.card-info {
   width: 80%;
-  margin: 15px;
-  border: solid blue 2px;
-  padding: 10px;
-  justify-content: flex-start;
 }
 
-.match-card img {
-  margin-right: 25px;
-  min-width: 70px;
-  height: 60px;
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 40%;
-}
-
-.match-card p {
+/* .match-card p {
   flex-wrap: wrap;
-}
+} */
 
 .home_button {
   width: 30px;
@@ -98,4 +106,17 @@ body {
   flex-direction: row;
   align-items: center;
   gap: 20px;
+}
+
+.skills_interests {
+  display: inline;
+  border: 2px solid;
+  border: none;
+}
+
+.match_username {
+  text-decoration: none;
+  color: rgb(71, 71, 71);
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
