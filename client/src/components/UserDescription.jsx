@@ -10,6 +10,8 @@ function UserDescription({ userProfile }) {
     userProfile.description
   );
   const [isEditDisabled, setIsEditDisabled] = useState(true);
+  const [isHidden, setIsHidden] = useState(true);
+  const [editToggle, setEditToggle] = useState("Open");
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleOnSubmit = async (e) => {
@@ -23,6 +25,7 @@ function UserDescription({ userProfile }) {
       console.log(error);
     }
     setIsEditDisabled(true);
+    setIsHidden(true);
     setCurrentDescription(newDescription);
   };
 
@@ -43,14 +46,18 @@ function UserDescription({ userProfile }) {
             onClick={() => {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
+                setIsHidden(false);
+                setEditToggle("Close");
               } else {
                 setIsEditDisabled(true);
+                setIsHidden(true);
+                setEditToggle("Open");
               }
             }}
           >
-            Edit your description
+            {editToggle} edition
           </button>
-          <form onSubmit={handleOnSubmit}>
+          <form hidden={isHidden} onSubmit={handleOnSubmit}>
             <textarea
               disabled={isEditDisabled}
               className="textarea"
