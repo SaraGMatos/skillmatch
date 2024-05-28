@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useContext, useEffect, useState } from "react";
 import supabase from "../../config/config_file";
+import "../styles/Main.css";
 
 function FilterOptions({ setCurrentSortBy }) {
   const [interests, setInterests] = useState([]);
@@ -24,7 +25,7 @@ function FilterOptions({ setCurrentSortBy }) {
   return (
     <div className="filter-options-container">
       <Link to="/main">
-        <button>Matches</button>
+        <button className="button_filter_component">Matches</button>
       </Link>
 
       <div className="filter-options-dropdown-container">
@@ -48,7 +49,9 @@ function FilterOptions({ setCurrentSortBy }) {
       </div>
 
       <Link to="/learning">
-        <button>Learning</button>
+        <button button className="button_filter_component">
+          Learning
+        </button>
       </Link>
     </div>
   );

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../config/config_file";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import "../styles/Main.css";
 
 function MainPage() {
   const { setUser } = useContext(UserContext);
