@@ -14,7 +14,7 @@ function Footer() {
             <button>
               <img
                 className="home_button"
-                src="../src/graphics/output-onlinepngtools.png"
+                src="../src/graphics/home.svg"
                 alt=""
               />
             </button>

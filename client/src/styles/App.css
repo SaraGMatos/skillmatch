@@ -50,7 +50,7 @@ body {
   justify-content: center;
   align-items: center;
   border: none;
-  justify-content: space-evenly;
+  justify-content: space-around;
   background-color: #e39b7d;
 }
 
@@ -89,12 +89,14 @@ body {
 }
 
 .home_button {
-  width: 30px;
+  width: 50px;
   height: auto;
 }
 
-.connection_button {
+.connection_button img {
   display: flex;
+  width: 40px;
+  height: auto;
   flex-direction: row;
   align-items: center;
   gap: 20px;
