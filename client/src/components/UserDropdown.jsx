@@ -28,7 +28,7 @@ function UserDropdown() {
 
     if (!!userIdToConnect) {
       let { data, error } = await supabase.rpc("post_chat", {
-        chatname: usernameToConnect,
+        chatname: "",
       });
       const chatId = data.chat_id;
       const id = await user.user_id;

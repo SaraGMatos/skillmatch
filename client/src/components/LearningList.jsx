@@ -3,6 +3,7 @@ import FilterOptions from "./FilterOptions";
 import supabase from "../../config/config_file";
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import Loading from "./Loading";
 
 function LearningList() {
   const { user } = useContext(UserContext);
@@ -112,7 +113,7 @@ function LearningList() {
           <p>Sorry, there is nothing on your learning list at the moment!</p>
         )
       ) : (
-        <p>Loading...</p>
+        <Loading/>
       )}
     </>
   );
