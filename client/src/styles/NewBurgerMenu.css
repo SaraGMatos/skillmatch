@@ -1,0 +1,24 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    position:fixed;
+    margin-top: 2%;
+    margin-left: 2%;
+    top: 0;
+    left: 0;
+}
+
+.main-container > button {
+    width: 15vw;
+    height: 15vw;
+}
+
+.show-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+}
+
+.menu-item {
+    margin: 10px;
+}
