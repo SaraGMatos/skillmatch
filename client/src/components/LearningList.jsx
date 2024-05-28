@@ -60,24 +60,19 @@ function LearningList() {
     if (user.user_id) {
       getMatchedUsers().then((data) => {
         setMatchedUsers(data);
+        setIsLoading(false);
       });
-      setIsLoading(false);
     }
   }, [user]);
 
   if (isLoading) {
-    return (
-      <>
-        <FilterOptions />
-        <Loading />
-      </>
-    );
+    return <Loading />;
   }
 
   return (
     <>
       <FilterOptions />
-      {hasMatches ? (
+      {hasMatches && !isLoading ? (
         <ul className="match-list">
           {matchedUsers.map((user) => {
             return (
