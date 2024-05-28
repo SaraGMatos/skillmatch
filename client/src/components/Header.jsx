@@ -9,14 +9,17 @@ function Header() {
 
   return (
     <nav className="navbar">
-      {/* <h1 style={{ textAlign: "center" }}>SkillMatch</h1> */}
-      <div className="headerImage">
-        <img src="../src/graphics/skillmatch_nobckg.png" alt="" />
-      </div>
-      {isSignedIn && (
+      {isSignedIn ? (
         <div className="headerLogged">
           <BurgerMenu />
+          <div className="headerImage">
+            <img src="../src/graphics/skillmatch_nobckg.png" alt="" />
+          </div>
           <UserDropdown />
+        </div>
+      ) : (
+        <div className="headerImage">
+          <img src="../src/graphics/skillmatch_nobckg.png" alt="" />
         </div>
       )}
     </nav>

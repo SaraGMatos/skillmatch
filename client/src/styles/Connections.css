@@ -8,6 +8,7 @@
   align-content: center;
   justify-content: left;
   width: 80vw;
+
   border-radius: 5px;
   padding: 5px;
   margin-left: auto;
@@ -43,6 +44,9 @@
 .connections-container {
   margin-top: 30px;
   padding: 5px;
+  height: 100vh;
+  max-width: 600px;
+  margin: auto;
 }
 
 .connection-card-group {

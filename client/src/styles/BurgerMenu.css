@@ -7,10 +7,12 @@
 .user-dropdown .dropdown-content {
   position: absolute;
   display: none;
-  background-color: #bbbbbb;
-  width: 65px;
+  background-color: #ececec;
+  width: 100px;
   box-shadow: 2px 2px 5px black;
-  border-radius: 10px;
+  border-radius: 5px;
+  margin: auto;
+  text-decoration: none;
 }
 
 .user-dropdown > img {
@@ -45,14 +47,14 @@ img {
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
-.user-dropdown {
-  position: fixed;
+/* .user-dropdown { */
+/* position: fixed;
   width: 25px;
   height: 25px;
   right: 10%;
   top: 2%;
-  z-index: 1000;
-}
+  z-index: 1000; */
+/* } */
 
 .bm-burger-button {
   position: fixed;

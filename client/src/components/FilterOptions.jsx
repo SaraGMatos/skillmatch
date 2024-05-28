@@ -24,10 +24,6 @@ function FilterOptions({ setCurrentSortBy }) {
 
   return (
     <div className="filter-options-container">
-      <Link to="/main">
-        <button className="button_filter_component">Matches</button>
-      </Link>
-
       <div className="filter-options-dropdown-container">
         <label htmlFor="filter">Choose your desired skill:</label>
         <select
@@ -47,12 +43,16 @@ function FilterOptions({ setCurrentSortBy }) {
           })}
         </select>
       </div>
-
-      <Link to="/learning">
-        <button button className="button_filter_component">
-          Learning
-        </button>
-      </Link>
+      <div className="filter_buttons">
+        <Link to="/main">
+          <button className="button_filter_component">Matches</button>
+        </Link>
+        <Link to="/learning">
+          <button button className="button_filter_component">
+            Learning
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

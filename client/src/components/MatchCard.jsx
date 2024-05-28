@@ -52,14 +52,18 @@ function MatchCard({ avatar_url, username, user_id }) {
         </Link>
         {isLearningList ? null : (
           <p className="skills_interests">
-            Interests:{" "}
+            <p p className="skills_and_interest_title">
+              {" "}
+              Interests:
+            </p>{" "}
             {userInterests.length !== 0
               ? userInterests.toString().replace(/,/g, ", ")
               : "Nothing here yet!"}
           </p>
         )}
         <p className="skills_interests">
-          Skills: {userSkills.toString().replace(/,/g, ", ")}
+          <p className="skills_and_interest_title">Skills:</p>{" "}
+          {userSkills.toString().replace(/,/g, ", ")}
         </p>
       </div>
     </div>

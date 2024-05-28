@@ -57,7 +57,7 @@ function UserPage() {
   };
 
   return (
-    <>
+    <div className="user_page">
       <div className="UserPageComponent">
         {/* Components below can be wrapped in an expandable */}
 
@@ -67,7 +67,10 @@ function UserPage() {
             setUserProfile={setUserProfile}
           />
         </div>
-        <UserDescription userProfile={userProfile} />
+        <UserDescription
+          className="user_description"
+          userProfile={userProfile}
+        />
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleInterest}>
             User Interest
@@ -81,8 +84,6 @@ function UserPage() {
           </button>
         </div>
         {interestIsVisible && <UserInterests userProfile={userProfile} />}
-
-        <div className="each_User_Page_Section"></div>
 
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleSkills}>
@@ -126,7 +127,7 @@ function UserPage() {
           {reviewsIsVisible && <UserReviews />}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
