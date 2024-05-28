@@ -11,10 +11,19 @@ function Footer() {
       {isSignedIn && (
         <div className="footer-container">
           <Link to="/main">
-            <button>Home</button>
+            <button>
+              <img
+                className="home_button"
+                src="../src/graphics/output-onlinepngtools.png"
+                alt=""
+              />
+            </button>
           </Link>
           <Link to="/connections">
-            <button>Connections</button>
+            <button className="connection_button">
+              <p>Connections</p>{" "}
+              <img src="../src/graphics/arrow_button.png" alt="" />
+            </button>
           </Link>
         </div>
       )}
