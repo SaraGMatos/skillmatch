@@ -9,7 +9,6 @@ function MainPage() {
   const { setUser } = useContext(UserContext);
   const [currentSortBy, setCurrentSortBy] = useState("");
   const navigate = useNavigate();
-  console.log(currentSortBy);
 
   useEffect(() => {
     async function getUserData() {
