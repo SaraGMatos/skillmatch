@@ -6,8 +6,10 @@ import { UserContext } from "../contexts/UserContext";
 
 function LearningList() {
   const { user } = useContext(UserContext);
+  const [currentSortBy, setCurrentSortBy] = useState("");
   const [matchedUsers, setMatchedUsers] = useState([]);
   const [hasMatches, setHasMatches] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getUserInterests = async () => {
     let { data, error } = await supabase.rpc("get_user_interests", {
@@ -49,37 +51,68 @@ function LearningList() {
         return [match.user_id, match];
       })
     );
-    const uniqueMatches = [...mapFromLearningList.values()];
+    let uniqueMatches = [...mapFromLearningList.values()];
 
     return uniqueMatches;
   };
 
   useEffect(() => {
+    setIsLoading(true);
+    setHasMatches(true);
+
     if (user.user_id) {
-      getMatchedUsers().then((data) => {
-        setMatchedUsers(data);
-      });
+      getMatchedUsers()
+        .then((data) => {
+          setMatchedUsers(data);
+        })
+        .then(() => {
+          if (currentSortBy.length > 0) {
+            supabase
+              .rpc("get_skill_id_by_name", {
+                skillname: currentSortBy,
+              })
+              .then(({ data }) => {
+                supabase
+                  .rpc("get_users_by_skill", {
+                    skillid: data,
+                  })
+                  .then(({ data }) => {
+                    setMatchedUsers(data);
+                    if (data.length === 0) {
+                      setHasMatches(false);
+                    }
+                    setIsLoading(false);
+                  });
+              });
+          } else {
+            setIsLoading(false);
+          }
+        });
     }
-  }, [user]);
+  }, [user, currentSortBy]);
 
   return (
     <>
-      <FilterOptions />
-      {hasMatches ? (
-        <ul className="match-list">
-          {matchedUsers.map((user) => {
-            return (
-              <MatchCard
-                avatar_url={user.avatar_url}
-                username={user.username}
-                user_id={user.user_id}
-                key={user.user_id}
-              />
-            );
-          })}
-        </ul>
+      <FilterOptions setCurrentSortBy={setCurrentSortBy} />
+      {!isLoading ? (
+        hasMatches ? (
+          <ul className="match-list">
+            {matchedUsers.map((user) => {
+              return (
+                <MatchCard
+                  avatar_url={user.avatar_url}
+                  username={user.username}
+                  user_id={user.user_id}
+                  key={user.user_id}
+                />
+              );
+            })}
+          </ul>
+        ) : (
+          <p>Sorry, there is nothing on your learning list at the moment!</p>
+        )
       ) : (
-        <p>Sorry, there is nothing on your learning list at the moment!</p>
+        <p>Loading...</p>
       )}
     </>
   );
