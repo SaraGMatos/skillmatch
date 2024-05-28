@@ -3,11 +3,13 @@ import FilterOptions from "./FilterOptions";
 import supabase from "../../config/config_file";
 import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import Loading from "./Loading";
 
 function LearningList() {
   const { user } = useContext(UserContext);
   const [matchedUsers, setMatchedUsers] = useState([]);
   const [hasMatches, setHasMatches] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getUserInterests = async () => {
     let { data, error } = await supabase.rpc("get_user_interests", {
@@ -59,8 +61,18 @@ function LearningList() {
       getMatchedUsers().then((data) => {
         setMatchedUsers(data);
       });
+      setIsLoading(false);
     }
   }, [user]);
+
+  if (isLoading) {
+    return (
+      <>
+        <FilterOptions />
+        <Loading />
+      </>
+    );
+  }
 
   return (
     <>
