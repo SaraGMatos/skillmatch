@@ -129,7 +129,7 @@ VITE_REACT_APP_SUPABASE_KEY=your_api_key
 
 9. **Running the project**
 
-- To run the project, run the following commands:
+- Run the following commands to start the project:
 
 ```sh
 cd client
