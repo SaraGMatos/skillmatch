@@ -26,7 +26,7 @@ function MainPage() {
           userid: userId,
         });
         setUser(data);
-        navigate("/user");
+        // navigate("/user");
         if (error) {
           console.error(error);
         }

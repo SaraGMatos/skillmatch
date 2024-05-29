@@ -37,6 +37,10 @@ function LoginPage() {
               email_label: "Email address",
               password_label: "Password",
             },
+            sign_up: {
+              email_label: "Email address",
+              password_label: "Create a password",
+            },
           },
         }}
         appearance={{

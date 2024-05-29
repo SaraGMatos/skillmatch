@@ -21,7 +21,30 @@ body {
   align-content: center;
 }
 
+#auth-sign-up {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
 #auth-sign-in div div div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+}
+
+#auth-sign-in div div div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+}
+
+#auth-sign-up div div div {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
