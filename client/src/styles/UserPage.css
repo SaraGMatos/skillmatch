@@ -26,6 +26,7 @@ h6 {
   position: relative;
   width: 80vw;
   max-width: 600px;
+  margin: auto;
 }
 
 .UserPageComponent > img {
