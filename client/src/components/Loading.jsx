@@ -1,4 +1,4 @@
-import loading from "../loading.json";
+import loading from "../graphics/loading.json";
 import { useLottie } from "lottie-react";
 
 function Loading() {

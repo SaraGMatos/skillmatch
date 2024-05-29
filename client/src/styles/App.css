@@ -7,6 +7,7 @@ html {
 
 body {
   min-height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: #d3eaff;
@@ -42,22 +43,20 @@ body {
 }
 
 .headerImage > img {
-  width: 60%;
+  /* width: 60%; */
   height: auto;
-  min-width: 10vw;
-  max-width: 60vw;
+  min-width: 3%;
+  max-width: 60%;
 }
 
 .footer {
   height: 50px;
-  display: flex;
-  bottom: 0;
-  flex-direction: row;
-  justify-content: center;
-  position: fixed;
-  z-index: 2000;
-  width: 100vw;
+  margin: 0 auto; /* Center the footer horizontally */
+  width: 100%;
   max-width: 600px;
+  z-index: 2000;
+  position: sticky;
+  bottom: 0; /* Stick to the bottom of the viewport */
 }
 
 .footer-container {

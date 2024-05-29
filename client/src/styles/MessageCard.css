@@ -14,6 +14,7 @@
   overflow-y: scroll;
   padding: 0 15px 60px 15px;
   margin-top: 40px;
+  max-width: 600px;
 }
 
 .message-card {
@@ -24,6 +25,7 @@
   width: 55vw;
   border-radius: 5px;
   padding: 5px;
+  max-width: 600px;
 }
 
 .message-card > * {
@@ -71,6 +73,7 @@
   height: 5vh;
   position: fixed;
   background-color: #e39b7d;
+  max-width: 600px;
 }
 
 .chat-header > h4 {
@@ -82,22 +85,26 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  position: fixed;
+  position: sticky;
   bottom: 52px;
   background-color: #e39b7d;
   border-radius: 5px;
   height: 2em;
-  margin-bottom: 10px;
+
+  margin: auto;
   color: white;
   font-size: 1.1em;
+
+  max-width: 600px;
 }
 
 .chat-message-form > button {
   margin: auto;
+  min-width: 20%x;
 }
 
 .chat-input {
-  width: 80vw;
+  width: 80%;
   border: 1px solid #e39b7d;
-  padding-left: 5px;
+  /* padding-left: 5px; */
 }

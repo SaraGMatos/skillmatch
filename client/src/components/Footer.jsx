@@ -14,14 +14,14 @@ function Footer() {
             <button>
               <img
                 className="home_button"
-                src="../src/graphics/home.svg"
+                src="https://i.postimg.cc/pX3njGrV/back-home-button.png"
                 alt=""
               />
             </button>
           </Link>
           <Link to="/connections">
             <button className="connection_button">
-              <img src="../src/graphics/envelope.svg" alt="" />
+              <img src="https://i.postimg.cc/J03wMrxC/email.png" alt="" />
             </button>
           </Link>
         </div>

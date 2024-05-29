@@ -13,13 +13,19 @@ function Header() {
         <div className="headerLogged">
           <BurgerMenu />
           <div className="headerImage">
-            <img src="../src/graphics/skillmatch_nobckg.png" alt="" />
+            <img
+              src="https://i.postimg.cc/15PhMFRm/skillmatch-nobckg.png"
+              alt=""
+            />
           </div>
           <UserDropdown />
         </div>
       ) : (
         <div className="headerImage">
-          <img src="../src/graphics/skillmatch_nobckg.png" alt="" />
+          <img
+            src="https://i.postimg.cc/15PhMFRm/skillmatch-nobckg.png"
+            alt=""
+          />
         </div>
       )}
     </nav>
