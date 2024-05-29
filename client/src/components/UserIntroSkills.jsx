@@ -159,7 +159,6 @@ function UserIntroSkills({ userProfile }) {
         ""
       )}
       {/* additional skills to add */}
-
       {addSkillsButton ? (
         <form onSubmit={handleOnSubmitNewSkill} className="add_new_skills_form">
           <label htmlFor="">or add new skill</label>

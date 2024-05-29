@@ -125,7 +125,7 @@ VITE_REACT_APP_SUPABASE_KEY=your_api_key
 
 8. **Creating Functions**
 
-- In order for this project to run correctly, there are Supabase functions that need creating by navigating to the "Database" section, then to the Functions section and clicking "Create New Function". The included doc [here]() will contain the name and corresponding code for each function needed.
+- In order for this project to run correctly, there are Supabase functions that need creating by navigating to the "Database" section, then to the Functions section and clicking "Create New Function". The included doc [here](./documentation/functions.md) will contain the name and corresponding code for each function needed.
 
 9. **Running the project**
 
@@ -141,7 +141,7 @@ npm run dev
 
 10. **Signing In**
 
--Sign up to create an account and you're good to go!
+- Sign up to create an account and you're good to go!
 
 ## Project Members
 
