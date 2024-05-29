@@ -45,9 +45,9 @@ function ConnectionsPage() {
         })
       })
       .then(() => {
+        {chats.sort(function(a,b){return a.last_message_time - b.last_message_time})}
         setIsLoading(false);
       });
-      {chats.sort(function(a,b){return a.last_message_time - b.last_message_time})}
   }, [refreshPage]);
 
   if (isLoading) return <h2>Loading...</h2>;
