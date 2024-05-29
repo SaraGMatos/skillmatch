@@ -2,7 +2,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  border-radius: 10px;
   /* border: green solid 1px; */
 }
 
@@ -34,7 +33,7 @@ h6 {
 .UserPageComponent > img {
   display: block;
   max-width: 100%;
-  border: 1px solid rgb(201, 201, 201);
+  border-radius: 10px;
 
   margin: auto;
 }
@@ -64,6 +63,7 @@ h6 {
 }
 
 .buttonToggle {
+  border-radius: 10px;
   width: 90%;
   background-color: #ececec;
   display: flex;
@@ -161,4 +161,6 @@ h6 {
 
 .each_User_Page_Section {
   background-color: #ececec;
+  border-radius: 10px;
+  /* border: 1px solid rgb(201, 201, 201); */
 }
