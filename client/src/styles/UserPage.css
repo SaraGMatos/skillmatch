@@ -193,6 +193,7 @@ h6 {
   padding: 2px;
   width: 100px;
   border-radius: 3px;
+}
 
 @media (max-width: 450px) {
   .profile_photo_container {
