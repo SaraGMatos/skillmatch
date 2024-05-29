@@ -55,7 +55,11 @@ function LoginPage() {
               borderRadius: "10px",
               backgroundColor: "#dfc9bf",
             },
-            label: { alignSelf: "center", color: "#3b3b3b", fontSize: "1.2em" },
+            label: {
+              alignSelf: "center",
+              color: "#3b3b3b",
+              fontSize: "1.2em",
+            },
             button: {
               width: "40%",
               alignSelf: "center",
