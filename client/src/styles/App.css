@@ -25,7 +25,7 @@ body {
   /* display: flex; */
   position: sticky;
   margin: auto;
-  padding: 10px;
+  padding-bottom: 10px;
   display: flex;
 }
 
@@ -39,7 +39,7 @@ body {
 .headerImage {
   display: flex;
   width: 100%;
-
+  padding-top: 5px;
   justify-content: center;
 }
 
