@@ -22,6 +22,7 @@ function App() {
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/connections" element={<ConnectionsPage />} />
           <Route path="/chat/:id" element={<Chat />} />
+          <Route path="/error" element={<ErrorPage />} />
           <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>

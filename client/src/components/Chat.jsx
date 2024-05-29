@@ -5,12 +5,13 @@ import { UserContext } from "../contexts/UserContext";
 import "../styles/MessageCard.css";
 import MessageCard from "./MessageCard";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 const socket = io.connect("https://skillmatch-production.up.railway.app/");
 
 export default function Chat() {
   const navigate = useNavigate();
-  if (useLocation().state === null) return <p>Sorry, chat not found</p>
+  if (useLocation().state === null) return <ErrorPage />;
 
   const { users, unfilteredUsers, chat } = useLocation().state;
   const { id } = useParams();
@@ -79,9 +80,11 @@ export default function Chat() {
   useEffect(() => {
     setIsLoading(true);
 
-    const usersIds = unfilteredUsers.map((currentUser)=>{ return currentUser.user_id})
-    if (!usersIds.includes(user.user_id)) navigate("/")
-    
+    const usersIds = unfilteredUsers.map((currentUser) => {
+      return currentUser.user_id;
+    });
+    if (!usersIds.includes(user.user_id)) navigate("/");
+
     const innerFunc = async () => {
       await fetchMessages();
       setIsLoading(false);
