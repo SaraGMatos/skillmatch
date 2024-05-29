@@ -3,6 +3,7 @@ import UserIntroSkills from "./UserIntroSkills";
 import UserPicture from "./UserPicture";
 import UserReviews from "./UserReviews";
 import UserShowcase from "./UserShowcase";
+import UserUsername from "./UserUsername";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
@@ -67,6 +68,12 @@ function UserPage() {
             setUserProfile={setUserProfile}
           />
         </div>
+        <div className="each_User_Page_Section">
+          <UserUsername
+            userProfile={userProfile}
+          />
+        </div>
+
         <UserDescription
           className="user_description"
           userProfile={userProfile}
@@ -82,9 +89,9 @@ function UserPage() {
               alt=""
             />
           </button>
+          {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
-        {interestIsVisible && <UserInterests userProfile={userProfile} />}
-
+        
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleSkills}>
             User Skills
