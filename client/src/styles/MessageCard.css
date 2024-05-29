@@ -22,7 +22,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-content: space-between;
-  width: 55vw;
+  width: 55%;
   border-radius: 5px;
   padding: 5px;
   max-width: 600px;
@@ -35,6 +35,7 @@
 .message-card > div {
   flex-direction: column;
   text-decoration: none;
+  overflow:hidden;
 }
 
 .message-card > div > * {
@@ -57,10 +58,10 @@
 }
 
 .message-date {
-  font-size: calc(10px + 0.5vw);
+  font-size: calc(10px +  0.1vw);
 }
 .message-body {
-  font-size: calc(10px + 1.5vw);
+  font-size: calc(10px + 0.3vw);
 }
 
 .chat-header {
