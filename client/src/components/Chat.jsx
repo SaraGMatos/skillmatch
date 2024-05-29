@@ -63,6 +63,7 @@ export default function Chat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
+    e.target.form[0].value = "";
     socket.emit("send_message", { message, room: chatId });
     postMessage();
   };
