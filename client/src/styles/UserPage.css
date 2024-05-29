@@ -48,8 +48,14 @@ h6 {
   background: none;
 }
 .description-container {
-  margin: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  text-align: justify;
+}
+
+.current-description {
+  font-size: large;
 }
 
 .description_button,
@@ -57,7 +63,7 @@ h6 {
   background-color: #e39b7d;
   padding: 5px 10px;
   border-radius: 5px;
-  margin: 5px auto 10px auto;
+  margin: 10px auto 10px auto;
   color: white;
   font-size: 0.8em;
 }
@@ -124,7 +130,7 @@ h6 {
   background-color: #e39b7d;
   padding: 5px 10px;
   border-radius: 5px;
-  margin: 5px 0 10px 40px;
+  margin: 10px 0 10px 40px;
   color: white;
   font-size: 1.1em;
 }

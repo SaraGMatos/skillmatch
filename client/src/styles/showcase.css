@@ -1,41 +1,47 @@
 .textarea {
-    border: 1px solid #ccc;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 1px 6px;
-    transition: height 0.2s ease-in-out;
-    resize: none;
-  }
-  
-  .textarea {
-    display: block;
-    margin-top: 5%;
-    margin-left: 5%;
-    width: 90%;
-    height: 200px;
-    min-width: 90%;
-    max-width: 90%;
-    overflow: hidden;
-    line-height: 20px;
-    overflow-y: scroll;
-  }
-  
-  .textarea[contenteditable]:empty::before {
-    content: "Placeholder still possible";
-    color: gray;
-  }
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+  transition: height 0.2s ease-in-out;
+  resize: none;
+}
 
-  .showcase-container {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-  }
+.textarea {
+  display: block;
+  margin-left: 5%;
+  width: 90%;
+  height: 90px;
+  min-width: 90%;
+  max-width: 90%;
+  overflow: hidden;
+  line-height: 20px;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
 
-  .edit_button {
-    background-color: #e39b7d;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin: 5px auto 10px auto;
-    color: white;
-    font-size: 0.8em;
-  }
+.textarea[contenteditable]:empty::before {
+  content: "Placeholder still possible";
+  color: gray;
+}
+
+.showcase-container {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.current-showcase {
+  font-size: large;
+  width: 100%;
+  text-align: justify;
+}
+
+.edit_button {
+  background-color: #e39b7d;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 5px auto 10px auto;
+  color: white;
+  font-size: 0.8em;
+}

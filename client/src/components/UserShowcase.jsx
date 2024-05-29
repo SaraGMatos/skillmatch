@@ -35,7 +35,7 @@ function UserShowcase({ userProfile }) {
 
   return (
     <div className="showcase-container">
-      <section>{currentShowcase}</section>
+      <section className="current-showcase">{currentShowcase}</section>
       {isLoggedUser && (
         <>
           <button
