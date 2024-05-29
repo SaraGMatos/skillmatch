@@ -2,7 +2,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /* border: green solid 1px; */
 }
 
 * {
@@ -24,23 +23,15 @@ h6 {
 }
 
 .UserPageComponent {
-  position: relative;
   width: 80vw;
   max-width: 600px;
   margin: auto;
-}
-
-.UserPageComponent > img {
-  display: block;
-  max-width: 100%;
-  border-radius: 10px;
-
-  margin: auto;
+  background-color: #d3eaff;
 }
 
 .editButton {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 10px;
 }
 
@@ -48,7 +39,6 @@ h6 {
   background: none;
 }
 .description-container {
-  
   margin: 20px;
   text-align: center;
 }
@@ -95,6 +85,23 @@ h6 {
   width: 100%;
   position: absolute;
   top: 90%;
+}
+
+.profile_photo_container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  margin: auto;
+}
+
+.profile_photo_container > img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+
+  margin: 10px auto;
 }
 
 .user_skills_list_container {
@@ -163,4 +170,15 @@ h6 {
   background-color: #ececec;
   border-radius: 10px;
   /* border: 1px solid rgb(201, 201, 201); */
+}
+
+@media (max-width: 450px) {
+  .profile_photo_container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+
+    display: flex;
+    margin: auto;
+  }
 }
