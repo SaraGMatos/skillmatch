@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import supabase from "../../config/config_file";
 import "../styles/UserPage.css";
+import UserpageConnect from "./UserpageConnect";
 
 function UserPicture({ userProfile, setUserProfile }) {
   const [newProfileImage, setNewProfileImage] = useState("");
@@ -19,7 +20,7 @@ function UserPicture({ userProfile, setUserProfile }) {
       newusername: userProfile.username,
       userid: userProfile.user_id,
     });
-    setUser(data)
+    setUser(data);
     setUserProfile(data);
   };
 
@@ -41,13 +42,17 @@ function UserPicture({ userProfile, setUserProfile }) {
         <div className="profile_photo_container">
           {" "}
           <img src={userProfile.avatar_url} alt="" />
-          {isLoggedUser && (
+          {isLoggedUser ? (
             <button className="editButton" onClick={handleOnClick}>
               <img
                 src="https://static.thenounproject.com/png/2473159-200.png"
                 alt=""
               />
             </button>
+          ) : (
+            <div className="userpageConnect_container">
+              <UserpageConnect userProfile={userProfile} />
+            </div>
           )}
           {isAlertImageURL ? (
             <form onSubmit={handleSubmit} className="NewProfilePhotForm">

@@ -27,6 +27,7 @@ h6 {
   max-width: 600px;
   margin: auto;
   background-color: #d3eaff;
+  /* position: relative; */
 }
 
 .editButton {
@@ -39,7 +40,6 @@ h6 {
   background: none;
 }
 .description-container {
-
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -103,6 +103,12 @@ h6 {
   margin: auto;
 }
 
+.userpageConnect_container {
+  position: absolute;
+  bottom: 80px;
+  right: 120px;
+}
+
 .profile_photo_container > img {
   width: 100%;
   max-width: 400px;
@@ -110,11 +116,25 @@ h6 {
   object-fit: cover;
 
   margin: 10px auto;
+  object-position: top;
 }
 
 .user_skills_list_container {
   list-style: none;
   width: 90%;
+}
+
+.userpage-connect-button {
+  position: absolute;
+  background-color: #e39b7d;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 10px 0 10px 40px;
+  color: white;
+  font-size: 1em;
+  width: 140px;
+  /* border: 1px red solid; */
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .user_skills_list_item {
@@ -195,14 +215,18 @@ h6 {
   border-radius: 3px;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .profile_photo_container {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
 
     display: flex;
     margin: auto;
   }
 
+  .userpage-connect-button {
+    font-size: 0.8em;
+    width: 100px;
+  }
 }
