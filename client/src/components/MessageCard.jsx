@@ -1,5 +1,6 @@
 import { UserContext } from "../contexts/UserContext";
 import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import io from "socket.io-client";
 import '../styles/MessageCard.css'
 
@@ -17,7 +18,7 @@ export default function MessageCard({message, users, removeMessage}) {
             </button>
         </div>
     return <div class="message-card not-my-chat">
-            <p className="message-date">{userOfMessage ? userOfMessage.username : "Deleted user"} at {message.time_created.slice(11,16)}</p>
+            <p className="message-date">{userOfMessage ? <Link className="chat-header-link" to={`/user/${userOfMessage.user_id}`}>{userOfMessage.username}</Link> : "Deleted user"} at {message.time_created.slice(11,16)}</p>
             <p className="message-body">{message.message}</p>
         </div>
 }
