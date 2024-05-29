@@ -36,6 +36,9 @@
 }
 
 .chat_intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   color: rgb(90, 90, 90);
   font-size: 1.1em;
   text-decoration: none;
@@ -73,4 +76,13 @@
   height: auto;
   min-width: 10px;
   max-width: 20px;
+}
+
+.red-dot {
+  position:absolute;
+  height: 15px;
+  width: 15px;
+  background-color: red;
+  border-radius: 100%;
+  margin: 5px;
 }
