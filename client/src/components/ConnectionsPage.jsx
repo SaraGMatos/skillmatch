@@ -26,11 +26,27 @@ function ConnectionsPage() {
     supabase
       .rpc("get_chats_by_user_id", { userid: user.user_id })
       .then(({ data }) => {
-        setChats(data);
+        const chats = data;
+
+        async function addLastMessageTime () {
+          for (const chat of chats) {
+            const { data } = await supabase.rpc("get_chat_messages", {chatid: chat.chat_id,})
+            chat.last_message_time = Date.parse(data[data.length-1].time_created)
+          }
+        }
+        addLastMessageTime()
+        .then(()=>{
+          chats.sort(function (a,b) {
+            return b.last_message_time - a.last_message_time
+          })
+
+          setChats(chats);
+        })
       })
       .then(() => {
         setIsLoading(false);
       });
+      {chats.sort(function(a,b){return a.last_message_time - b.last_message_time})}
   }, [refreshPage]);
 
   if (isLoading) return <h2>Loading...</h2>;
