@@ -14,7 +14,6 @@ const ProtectedRoutes = () => {
         .rpc("get_user_by_id", { userid: userId })
         .then((data) => {
           if (data.data) setIsLoggedIn(true);
-          //console.log(data.data.user_id);
         })
         .then(() => {
           setIsLoading(false);
