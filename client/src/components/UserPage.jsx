@@ -68,7 +68,7 @@ function UserPage() {
             setUserProfile={setUserProfile}
           />
         </div>
-        <div className="each_User_Page_Section">
+        <div>
           <UserUsername
             userProfile={userProfile}
           />

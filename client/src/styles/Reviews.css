@@ -138,3 +138,12 @@
   border: black solid 1px;
   border-radius: 5px;
 }
+
+.add-review_button {
+  background-color: #e39b7d;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 5px 10px 10px 15px;
+  color: white;
+  font-size: 0.8em;
+}

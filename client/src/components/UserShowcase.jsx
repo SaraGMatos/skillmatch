@@ -37,6 +37,7 @@ function UserShowcase({ userProfile }) {
       {isLoggedUser && (
         <>
           <button
+            className='edit_button'
             onClick={() => {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
@@ -59,7 +60,7 @@ function UserShowcase({ userProfile }) {
               onChange={handleChange}
               defaultValue={currentShowcase}
             />
-            <button className="showcaseSubmit" type="submit">
+            <button className="edit_button" type="submit">
               Submit change
             </button>
           </form>{" "}
