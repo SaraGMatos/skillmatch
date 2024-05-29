@@ -142,3 +142,15 @@ body {
   color: rgb(71, 71, 71);
   font-weight: bold;
 }
+
+.error-page-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.error-page-section h2 {
+  text-align: center;
+  color: #6f7ea1;
+}
