@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link} from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import "../styles/Reviews.css"
 import supabase from "../../config/config_file";
@@ -6,6 +7,8 @@ import supabase from "../../config/config_file";
 function ReviewsList({ date, message, reviewer, review_id, rate }) {
     const [isDeleted, setIsDeleted] = useState(false)
     const [reviewerUsername, setReviewerUsername] = useState('')
+    const [reviewerImg, setReviewerImg] = useState("")
+    const [reviewerId, setReviewerId] = useState('')
     const { user } = useContext(UserContext);
 
     
@@ -22,7 +25,11 @@ function ReviewsList({ date, message, reviewer, review_id, rate }) {
         userid: reviewer
         })
         if (error) console.error(error)
-        else setReviewerUsername(data.username)
+        else {
+            setReviewerUsername(data.username)
+            setReviewerImg(data.avatar_url)
+            setReviewerId(data.user_id)
+        }
     }
 
     useEffect(() => {
@@ -42,7 +49,11 @@ function ReviewsList({ date, message, reviewer, review_id, rate }) {
                 <div className="review-container">
                     <p className="reviewMessage">{message}</p>
                     <p className="reviewRate">{rate} ⭐️</p>
-                    <p className="reviewUsername">By {reviewerUsername}</p>
+                    <Link className="reviewerDetails" to={`/user/${reviewerId}`}>
+                        <img src={reviewerImg} className="reviewerImg"/>
+                        <p className="reviewUsername">By {reviewerUsername}</p>
+                    </Link>
+                    
                     <p className="reviewDate">{date}</p>
                     {user.user_id === reviewer && (<button onClick={() => handleDelete()} className="reviewDeleteBtn">❌</button>)}
                 </div>
