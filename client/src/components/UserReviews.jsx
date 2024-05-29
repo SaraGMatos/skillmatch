@@ -28,13 +28,13 @@ function UserReviews() {
   return (
     <>
       {!isAddActive && (
-        <button onClick={handleToggleClick} className="addReviewBtn">
+        <button onClick={handleToggleClick} className="add-review_button">
           Add review
         </button>
       )}
       {isAddActive && (
         <>
-          <button onClick={handleToggleClick} className="addReviewBtn">
+          <button onClick={handleToggleClick} className="add-review_button">
             Close tab
           </button>
           <ReviewForm

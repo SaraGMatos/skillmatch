@@ -2,6 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  border-radius: 10px;
+  /* border: green solid 1px; */
 }
 
 * {
@@ -26,11 +28,13 @@ h6 {
   position: relative;
   width: 80vw;
   max-width: 600px;
+  margin: auto;
 }
 
 .UserPageComponent > img {
   display: block;
   max-width: 100%;
+  border: 1px solid rgb(201, 201, 201);
 
   margin: auto;
 }
@@ -45,6 +49,7 @@ h6 {
   background: none;
 }
 .description-container {
+  
   margin: 20px;
   text-align: center;
 }
@@ -89,7 +94,7 @@ h6 {
   background-color: rgb(208, 228, 221);
   width: 100%;
   position: absolute;
-  top: 50%;
+  top: 90%;
 }
 
 .user_skills_list_container {
@@ -98,6 +103,7 @@ h6 {
 }
 
 .user_skills_list_item {
+  border-radius: 0px;
   display: flex;
   padding: 10px 40px 10px 10px;
 
@@ -140,6 +146,7 @@ h6 {
   margin: 10px;
   align-items: center;
   padding-bottom: 20px;
+  background-color: #ececec;
 }
 
 .add_new_skills_button {
