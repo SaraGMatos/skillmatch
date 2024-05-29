@@ -36,7 +36,7 @@ function UserDescription({ userProfile }) {
 
   useEffect(() => {
     setCurrentDescription(userProfile.description);
-  }, [userProfile, newDescription]);
+  }, [userProfile]);
 
   return (
     <div className="description-container">

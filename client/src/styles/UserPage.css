@@ -48,12 +48,12 @@ h6 {
   background: none;
 }
 .description-container {
-  
   margin: 20px;
   text-align: center;
 }
 
-.description_button {
+.description_button,
+.username_button {
   background-color: #e39b7d;
   padding: 5px 10px;
   border-radius: 5px;
