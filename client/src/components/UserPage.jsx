@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
 import "../styles/UserPage.css";
 import UserDescription from "./UserDescription";
+import UserpageConnect from "./UserpageConnect";
 
 function UserPage() {
   const [interestIsVisible, setInterestIsVisible] = useState(false);
@@ -72,6 +73,7 @@ function UserPage() {
           <UserUsername
             userProfile={userProfile}
           />
+          <UserpageConnect userProfile={userProfile} />
         </div>
 
         <UserDescription

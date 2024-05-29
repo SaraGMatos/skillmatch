@@ -6,7 +6,7 @@ import "../styles/UserPage.css";
 
 function UserUsername({ userProfile }) {
   const { user } = useContext(UserContext);
-  const [newUsername, setNewUsername] = useState("");
+  const [newUsername, setNewUsername] = useState(userProfile.username);
   const [currentUsername, setCurrentUsername] = useState(
     userProfile.username
   );
