@@ -9,7 +9,7 @@ function UserShowcase({ userProfile }) {
   const [newShowcase, setNewShowcase] = useState(userProfile.showcase);
   const [currentShowcase, setCurrentShowcase] = useState(userProfile.showcase);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
-  const [editToggle, setEditToggle] = useState("Open edition");
+  const [editToggle, setEditToggle] = useState("✎ Edit showcase");
   const [isHidden, setIsHidden] = useState(true);
   const isLoggedUser = userProfile.user_id === user.user_id;
 
@@ -26,7 +26,7 @@ function UserShowcase({ userProfile }) {
     setIsEditDisabled(true);
     setIsHidden(true);
     setCurrentShowcase(newShowcase);
-    setEditToggle("Open edition");
+    setEditToggle("✎ Edit showcase");
   };
 
   const handleChange = (e) => {
@@ -48,7 +48,7 @@ function UserShowcase({ userProfile }) {
               } else {
                 setIsEditDisabled(true);
                 setIsHidden(true);
-                setEditToggle("Open edition");
+                setEditToggle("✎ Edit showcase");
               }
             }}
           >

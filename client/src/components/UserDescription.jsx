@@ -12,7 +12,7 @@ function UserDescription({ userProfile }) {
   );
   const [isEditDisabled, setIsEditDisabled] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
-  const [editToggle, setEditToggle] = useState("Open");
+  const [editToggle, setEditToggle] = useState("✎ Edit description");
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleOnSubmit = async (e) => {
@@ -28,7 +28,7 @@ function UserDescription({ userProfile }) {
     setIsEditDisabled(true);
     setIsHidden(true);
     setCurrentDescription(newDescription);
-    setEditToggle("Open");
+    setEditToggle("✎ Edit description");
   };
 
   const handleChange = (e) => {
@@ -54,11 +54,11 @@ function UserDescription({ userProfile }) {
               } else {
                 setIsEditDisabled(true);
                 setIsHidden(true);
-                setEditToggle("Open");
+                setEditToggle("✎ Edit description");
               }
             }}
           >
-            {editToggle} edition
+            {editToggle}
           </button>
           <form
             class="description-form"
