@@ -1,29 +1,31 @@
 .textarea {
-    border: 1px solid #ccc;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 1px 6px;
-    transition: height 0.2s ease-in-out;
-    resize: none;
-  }
-  
-  .textarea {
-    display: block;
-    margin-top: 5%;
-    margin-left: 5%;
-    width: 90%;
-    height: 200px;
-    min-width: 90%;
-    max-width: 90%;
-    overflow: hidden;
-    line-height: 20px;
-    overflow-y: scroll;
-  }
-  
-  .textarea[contenteditable]:empty::before {
-    content: "Placeholder still possible";
-    color: gray;
-  }
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+  transition: height 0.2s ease-in-out;
+  resize: none;
+}
+
+.textarea {
+  display: block;
+  margin-top: 5%;
+  margin-left: 5%;
+  padding: 10px;
+  width: 90%;
+  height: 80px;
+  min-width: 90%;
+  max-width: 90%;
+  border-radius: 10px;
+  overflow: hidden;
+  line-height: 20px;
+  overflow-y: scroll;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "Placeholder still possible";
+  color: gray;
+}
 
   .showcase-container {
     padding-left: 15px;

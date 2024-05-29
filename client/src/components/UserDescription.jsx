@@ -28,6 +28,7 @@ function UserDescription({ userProfile }) {
     setIsEditDisabled(true);
     setIsHidden(true);
     setCurrentDescription(newDescription);
+    setEditToggle("Open");
   };
 
   const handleChange = (e) => {
