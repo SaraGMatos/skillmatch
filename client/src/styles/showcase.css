@@ -70,3 +70,9 @@
   color: white;
   font-size: 0.8em;
 }
+
+.button-div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
