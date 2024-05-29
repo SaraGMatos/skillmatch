@@ -77,9 +77,14 @@
   max-width: 600px;
 }
 
-.chat-header > h4 {
+.chat-header > h4{
   background-color: none !important;
   margin: auto;
+}
+
+.chat-header-link {
+  text-decoration: none;
+  color: black;
 }
 
 .chat-message-form {
