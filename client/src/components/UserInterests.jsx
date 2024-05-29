@@ -129,7 +129,7 @@ function UserInterests({ userProfile }) {
           onClick={handleAddInterestButton}
           className="add_existing_skills_button"
         >
-          add new interests
+          Add new interests
         </button>
       )}
       {/* form with dropdown menu */}

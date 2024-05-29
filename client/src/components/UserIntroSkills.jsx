@@ -130,7 +130,7 @@ function UserIntroSkills({ userProfile }) {
           onClick={handleAddSkillButton}
           className="add_existing_skills_button"
         >
-          add new skills
+          Add new skills
         </button>
       )}
       {/* form with dropdown menu */}
