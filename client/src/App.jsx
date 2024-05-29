@@ -6,9 +6,9 @@ import UserPage from "./components/UserPage";
 import ConnectionsPage from "./components/ConnectionsPage";
 import Footer from "./components/Footer";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import ChatPage from "./components/ChatPage";
 import Chat from "./components/Chat";
 import LearningList from "./components/LearningList";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/connections" element={<ConnectionsPage />} />
           <Route path="/chat/:id" element={<Chat />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Route>
       </Routes>
       <Footer />
