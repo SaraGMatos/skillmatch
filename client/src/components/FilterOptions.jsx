@@ -26,7 +26,7 @@ function FilterOptions({ setCurrentSortBy }) {
     <div className="filter-options-container">
       <div className="filter-options-dropdown-container">
         <label htmlFor="filter">
-          <p>Choose your desired skill:</p>
+          <p className="">Choose your desired skill:</p>
         </label>
         <select
           name="filter"
