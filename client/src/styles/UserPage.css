@@ -39,15 +39,23 @@ h6 {
   background: none;
 }
 .description-container {
-  margin: 20px;
-  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  text-align: justify;
 }
 
-.description_button {
+.current-description {
+  font-size: large;
+}
+
+.description_button,
+.username_button {
   background-color: #e39b7d;
   padding: 5px 10px;
   border-radius: 5px;
-  margin: 5px auto 10px auto;
+  margin: 10px auto 10px auto;
   color: white;
   font-size: 0.8em;
 }
@@ -131,7 +139,7 @@ h6 {
   background-color: #e39b7d;
   padding: 5px 10px;
   border-radius: 5px;
-  margin: 5px 0 10px 40px;
+  margin: 10px 0 10px 40px;
   color: white;
   font-size: 1.1em;
 }
@@ -172,6 +180,20 @@ h6 {
   /* border: 1px solid rgb(201, 201, 201); */
 }
 
+.username-container {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.username-container form input {
+  margin: 5px;
+  padding: 2px;
+  width: 100px;
+  border-radius: 3px;
+
 @media (max-width: 450px) {
   .profile_photo_container {
     position: relative;
@@ -181,4 +203,5 @@ h6 {
     display: flex;
     margin: auto;
   }
+
 }

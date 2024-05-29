@@ -35,7 +35,7 @@ function UserReviews() {
       {isAddActive && (
         <>
           <button onClick={handleToggleClick} className="add-review_button">
-            Close tab
+            Close
           </button>
           <ReviewForm
             setIsAddActive={setIsAddActive}
@@ -48,7 +48,6 @@ function UserReviews() {
 
       <ul className="reviewsUl">
         {userReviews.map((review) => {
-          
           const date = new Date(review.time_created);
           return (
             <li key={review.review_id}>
