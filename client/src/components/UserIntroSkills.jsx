@@ -174,10 +174,10 @@ function UserIntroSkills({ userProfile }) {
             type="text"
             value={skillToAddDescription}
             onChange={handleOnChangeNewSkillDescription}
-            placeholder="describe your skills"
+            placeholder="describe your skill"
           />
           <button type="submit" className="add_new_skills_button">
-            Add your skills
+            Add your skill
           </button>
         </form>
       ) : (

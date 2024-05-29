@@ -137,6 +137,10 @@ h6 {
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
+.interest-select {
+  margin-left: 5px;
+}
+
 .user_skills_list_item {
   border-radius: 0px;
   display: flex;

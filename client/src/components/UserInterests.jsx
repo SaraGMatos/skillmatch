@@ -140,7 +140,10 @@ function UserInterests({ userProfile }) {
         >
           <label>
             Pick your interests
-            <select onChange={handleOnChangeExistingInterest}>
+            <select
+              className="interest-select"
+              onChange={handleOnChangeExistingInterest}
+            >
               <option>interest</option>
               {allInterest.map((interest) => {
                 return (
