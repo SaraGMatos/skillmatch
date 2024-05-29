@@ -26,3 +26,18 @@
   content: "Placeholder still possible";
   color: gray;
 }
+
+  .showcase-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+  }
+
+  .edit_button {
+    background-color: #e39b7d;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px auto 10px auto;
+    color: white;
+    font-size: 0.8em;
+  }

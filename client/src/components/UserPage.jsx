@@ -68,7 +68,7 @@ function UserPage() {
             setUserProfile={setUserProfile}
           />
         </div>
-        <div className="each_User_Page_Section">
+        <div>
           <UserUsername
             userProfile={userProfile}
           />
@@ -85,7 +85,7 @@ function UserPage() {
               className={
                 interestIsVisible ? "arrow_button_down" : "arrow_button_right"
               }
-              src="../src/graphics/arrow_button.png"
+              src="https://i.postimg.cc/B6Z83RYp/arrow-button.png"
               alt=""
             />
           </button>
@@ -99,7 +99,7 @@ function UserPage() {
               className={
                 skillsIsVisible ? "arrow_button_down" : "arrow_button_right"
               }
-              src="../src/graphics/arrow_button.png"
+              src="https://i.postimg.cc/B6Z83RYp/arrow-button.png"
               alt=""
             />
           </button>
@@ -113,7 +113,7 @@ function UserPage() {
               className={
                 showcaseIsVisible ? "arrow_button_down" : "arrow_button_right"
               }
-              src="../src/graphics/arrow_button.png"
+              src="https://i.postimg.cc/B6Z83RYp/arrow-button.png"
               alt=""
             />
           </button>
@@ -127,7 +127,7 @@ function UserPage() {
               className={
                 reviewsIsVisible ? "arrow_button_down" : "arrow_button_right"
               }
-              src="../src/graphics/arrow_button.png"
+              src="https://i.postimg.cc/B6Z83RYp/arrow-button.png"
               alt=""
             />
           </button>
