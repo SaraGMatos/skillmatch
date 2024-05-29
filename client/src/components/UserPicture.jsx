@@ -7,7 +7,7 @@ import "../styles/UserPage.css";
 function UserPicture({ userProfile, setUserProfile }) {
   const [newProfileImage, setNewProfileImage] = useState("");
   const [isAlertImageURL, setIsAlertImageURL] = useState(false);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleSubmit = async (e) => {
@@ -19,6 +19,7 @@ function UserPicture({ userProfile, setUserProfile }) {
       newusername: userProfile.username,
       userid: userProfile.user_id,
     });
+    setUser(data)
     setUserProfile(data);
   };
 
@@ -37,29 +38,32 @@ function UserPicture({ userProfile, setUserProfile }) {
   return (
     <>
       <div className="UserPageComponent">
-        <img src={userProfile.avatar_url} alt="" />
-        {isLoggedUser && (
-          <button className="editButton" onClick={handleOnClick}>
-            <img
-              src="https://static.thenounproject.com/png/2473159-200.png"
-              alt=""
-            />
-          </button>
-        )}
-        {isAlertImageURL ? (
-          <form onSubmit={handleSubmit} className="NewProfilePhotForm">
-            <label htmlFor="newUrl">new photo url</label>
-            <input
-              onChange={handleOnChange}
-              type="text"
-              id="newUrl"
-              value={newProfileImage}
-            />
-            <button type="submit">update</button>
-          </form>
-        ) : (
-          ""
-        )}
+        <div className="profile_photo_container">
+          {" "}
+          <img src={userProfile.avatar_url} alt="" />
+          {isLoggedUser && (
+            <button className="editButton" onClick={handleOnClick}>
+              <img
+                src="https://static.thenounproject.com/png/2473159-200.png"
+                alt=""
+              />
+            </button>
+          )}
+          {isAlertImageURL ? (
+            <form onSubmit={handleSubmit} className="NewProfilePhotForm">
+              <label htmlFor="newUrl">new photo url</label>
+              <input
+                onChange={handleOnChange}
+                type="text"
+                id="newUrl"
+                value={newProfileImage}
+              />
+              <button type="submit">update</button>
+            </form>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </>
   );

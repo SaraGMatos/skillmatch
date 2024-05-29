@@ -6,7 +6,7 @@ import supabase from "../../config/config_file";
 
 function UserShowcase({ userProfile }) {
   const { user } = useContext(UserContext);
-  const [newShowcase, setNewShowcase] = useState("");
+  const [newShowcase, setNewShowcase] = useState(userProfile.showcase);
   const [currentShowcase, setCurrentShowcase] = useState(userProfile.showcase);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
   const [editToggle, setEditToggle] = useState("Open edition");
