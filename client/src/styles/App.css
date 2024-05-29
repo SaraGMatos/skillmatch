@@ -14,6 +14,29 @@ body {
   align-items: center;
 }
 
+#auth-sign-in {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
+#auth-sign-in div div div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+}
+
+input[type="email"]::placeholder {
+  color: #626161;
+}
+
+input[type="password"]::placeholder {
+  color: #626161;
+}
+
 .navbar {
   /* overflow: hidden; */
   background-color: #d3eaff;
