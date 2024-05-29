@@ -7,7 +7,7 @@ import "../styles/UserPage.css";
 function UserPicture({ userProfile, setUserProfile }) {
   const [newProfileImage, setNewProfileImage] = useState("");
   const [isAlertImageURL, setIsAlertImageURL] = useState(false);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleSubmit = async (e) => {
@@ -19,8 +19,7 @@ function UserPicture({ userProfile, setUserProfile }) {
       newusername: userProfile.username,
       userid: userProfile.user_id,
     });
-    const updatedUser = await supabase.rpc('get_user_by_id', { userid: userProfile.user_id })
-    localStorage.setItem("skillMatchUserKey", JSON.stringify(updatedUser))
+    setUser(data)
     setUserProfile(data);
   };
 
