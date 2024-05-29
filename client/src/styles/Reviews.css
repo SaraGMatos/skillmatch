@@ -19,20 +19,20 @@
   font-weight: bold;
 }
 .reviewDate {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  margin-left: 2px;
+  grid-column: 5/6;
+  grid-row: 1/2;
+  padding: 5px;
+  text-align: right;
 }
 .reviewMessage {
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column: 1/6;
+
   grid-row-start: 2;
   grid-row-end: 4;
-  margin-top: 5px;
+  /* margin-top: 5px;
   margin-left: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 5px; */
+  padding: 10px;
 }
 .reviewsUl {
   width: 100%;
@@ -44,33 +44,38 @@
 }
 
 .reviewerDetails {
-  grid-column-start: 1;
-  grid-row-start: 6;
+  grid-column: 1 / 6;
+  grid-row: 4/5;
   margin-top: 10px;
   margin-left: 5px;
   font-weight: bold;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
   text-decoration: none;
   color: black;
+  width: 100%;
 }
 
 .reviewerDetails:visited {
   color: black;
 }
 
-.reviewerImg{
+.reviewerImg {
+  grid-column: 1 /2;
+  grid-row: 1;
   height: 30px;
   width: 30px;
   border-radius: 50%;
   margin-bottom: 5px;
+  object-fit: cover;
 }
 
-
 .reviewDeleteBtn {
-  grid-column-start: 3;
-  grid-row-start: 5;
-  margin-right: -60px;
+  /* grid-column: 5/6;
+  grid-row: 5/6; */
+  margin-left: 0px;
+  text-align: right;
 }
 
 .addReviewBtn {
@@ -116,6 +121,12 @@
   grid-column-start: 1;
   grid-column-end: 5;
   grid-row-start: 8;
+  margin-left: 10px;
+}
+
+.reviewUsername {
+  grid-column: 2/3;
+  grid-row-start: -1;
   margin-left: 10px;
 }
 

@@ -6,13 +6,11 @@ import "../styles/UserPage.css";
 
 function UserUsername({ userProfile }) {
   const { user } = useContext(UserContext);
-  const [newUsername, setNewUsername] = useState(userProfile.username);
-  const [currentUsername, setCurrentUsername] = useState(
-    userProfile.username
-  );
+  const [newUsername, setNewUsername] = useState("");
+  const [currentUsername, setCurrentUsername] = useState(userProfile.username);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
-  const [editToggle, setEditToggle] = useState("✏️");
+  const [editToggle, setEditToggle] = useState("Open edition");
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleOnSubmit = async (e) => {
@@ -28,6 +26,7 @@ function UserUsername({ userProfile }) {
     setIsEditDisabled(true);
     setIsHidden(true);
     setCurrentUsername(newUsername);
+    setEditToggle("Open edition");
   };
 
   const handleChange = (e) => {
@@ -36,7 +35,7 @@ function UserUsername({ userProfile }) {
 
   useEffect(() => {
     setCurrentUsername(userProfile.username);
-  }, [userProfile, newUsername]);
+  }, [userProfile]);
 
   return (
     <div className="username-container">
@@ -49,11 +48,11 @@ function UserUsername({ userProfile }) {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
                 setIsHidden(false);
-                setEditToggle('❌');
+                setEditToggle("Close");
               } else {
                 setIsEditDisabled(true);
                 setIsHidden(true);
-                setEditToggle("✏️");
+                setEditToggle("Open edition");
               }
             }}
           >
@@ -70,7 +69,7 @@ function UserUsername({ userProfile }) {
               defaultValue={currentUsername}
             />
             <button className="username_button" type="submit">
-              ✅
+              Submit
             </button>
           </form>{" "}
         </>

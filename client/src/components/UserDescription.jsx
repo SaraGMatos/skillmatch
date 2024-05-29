@@ -37,11 +37,11 @@ function UserDescription({ userProfile }) {
 
   useEffect(() => {
     setCurrentDescription(userProfile.description);
-  }, [userProfile, newDescription]);
+  }, [userProfile]);
 
   return (
     <div className="description-container">
-      <section>{currentDescription}</section>
+      <section className="current-description">{currentDescription}</section>
       {isLoggedUser && (
         <>
           <button
@@ -60,7 +60,11 @@ function UserDescription({ userProfile }) {
           >
             {editToggle} edition
           </button>
-          <form hidden={isHidden} onSubmit={handleOnSubmit}>
+          <form
+            class="description-form"
+            hidden={isHidden}
+            onSubmit={handleOnSubmit}
+          >
             <textarea
               disabled={isEditDisabled}
               className="textarea"
