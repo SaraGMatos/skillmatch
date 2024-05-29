@@ -10,6 +10,8 @@ function ConnectionCard({ chat }) {
   const [unfilteredUsers, setUnfilteredUsers] = useState ([])
   const [isLoading, setIsLoading] = useState(false);
   const [cardTitle, setCardTitle] = useState(`Chat with `);
+  const [lastSeen, setLastSeen] = useState(JSON.parse(localStorage.getItem(`${chat.chat_id}_last_seen`)) || 0);
+  const [lastMessageTime, setLastMessageTime] = useState(0)
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,6 +35,14 @@ function ConnectionCard({ chat }) {
       .then(() => {
         setIsLoading(false);
       });
+    
+    supabase
+      .rpc("get_chat_messages", {
+        chatid: chat.chat_id,
+      })
+      .then(({data})=>{
+        setLastMessageTime(Date.parse(data[data.length-1].time_created))
+      })
   }, []);
 
   if (isLoading) return <h2>Loading...</h2>;
@@ -47,6 +57,7 @@ function ConnectionCard({ chat }) {
         }
         alt=""
       />
+      {lastMessageTime > lastSeen && <div className="red-dot"></div>}
       <Link
         className="chat_intro"
         to={`/chat/${chat.chat_id}`}

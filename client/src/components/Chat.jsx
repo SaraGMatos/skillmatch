@@ -13,7 +13,7 @@ export default function Chat() {
   const navigate = useNavigate();
   if (useLocation().state === null) return <ErrorPage />;
 
-  const { users, unfilteredUsers, chat } = useLocation().state;
+  const { users, unfilteredUsers, chat, setLastSeen } = useLocation().state;
   const { id } = useParams();
   const { user } = useContext(UserContext);
   const [message, setMessage] = useState("");
@@ -73,6 +73,7 @@ export default function Chat() {
 
   useEffect(() => {
     setIsLoading(true);
+    localStorage.setItem(`${chat.chat_id}_last_seen`, Date.now())
 
     const usersIds = unfilteredUsers.map((currentUser) => {
       return currentUser.user_id;
@@ -87,6 +88,7 @@ export default function Chat() {
 
     socket.on("receive_message", (data) => {
       fetchMessages();
+      localStorage.setItem(`${chat.chat_id}_last_seen`, Date.now())
     });
   }, [socket]);
 
