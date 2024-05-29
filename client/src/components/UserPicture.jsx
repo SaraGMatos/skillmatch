@@ -19,6 +19,8 @@ function UserPicture({ userProfile, setUserProfile }) {
       newusername: userProfile.username,
       userid: userProfile.user_id,
     });
+    const updatedUser = await supabase.rpc('get_user_by_id', { userid: userProfile.user_id })
+    localStorage.setItem("skillMatchUserKey", JSON.stringify(updatedUser))
     setUserProfile(data);
   };
 
