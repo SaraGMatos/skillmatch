@@ -65,7 +65,7 @@ function UserShowcase({ userProfile }) {
               defaultValue={currentShowcase}
             />
             <button className="edit_button" type="submit">
-              Submit change
+              Submit
             </button>
           </form>{" "}
         </>

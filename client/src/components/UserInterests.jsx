@@ -182,7 +182,7 @@ function UserInterests({ userProfile }) {
             placeholder="describe your interest"
           />
           <button type="submit" className="add_new_skills_button">
-            add your interest
+            Add your interest
           </button>
         </form>
       ) : (

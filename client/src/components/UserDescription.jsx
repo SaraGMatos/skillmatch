@@ -75,7 +75,7 @@ function UserDescription({ userProfile }) {
               defaultValue={currentDescription}
             />
             <button className="description_button" type="submit">
-              Submit change
+              Submit
             </button>
           </form>{" "}
         </>

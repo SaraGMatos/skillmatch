@@ -177,7 +177,7 @@ function UserIntroSkills({ userProfile }) {
             placeholder="describe your skills"
           />
           <button type="submit" className="add_new_skills_button">
-            add your skills
+            Add your skills
           </button>
         </form>
       ) : (
