@@ -9,6 +9,7 @@ function UserShowcase({ userProfile }) {
   const [newShowcase, setNewShowcase] = useState("");
   const [currentShowcase, setCurrentShowcase] = useState(userProfile.showcase);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
+  const [editToggle, setEditToggle] = useState("Open edition");
   const [isHidden, setIsHidden] = useState(true);
   const isLoggedUser = userProfile.user_id === user.user_id;
 
@@ -25,6 +26,7 @@ function UserShowcase({ userProfile }) {
     setIsEditDisabled(true);
     setIsHidden(true);
     setCurrentShowcase(newShowcase);
+    setEditToggle("Open edition");
   };
 
   const handleChange = (e) => {
@@ -37,18 +39,20 @@ function UserShowcase({ userProfile }) {
       {isLoggedUser && (
         <>
           <button
-            className='edit_button'
+            className="edit_button"
             onClick={() => {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
                 setIsHidden(false);
+                setEditToggle("Close");
               } else {
                 setIsEditDisabled(true);
                 setIsHidden(true);
+                setEditToggle("Open edition");
               }
             }}
           >
-            Edit your showcase
+            {editToggle}
           </button>
           <form hidden={isHidden} onSubmit={handleOnSubmit}>
             <textarea

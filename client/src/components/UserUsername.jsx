@@ -10,7 +10,7 @@ function UserUsername({ userProfile }) {
   const [currentUsername, setCurrentUsername] = useState(userProfile.username);
   const [isEditDisabled, setIsEditDisabled] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
-  const [editToggle, setEditToggle] = useState("Open edit");
+  const [editToggle, setEditToggle] = useState("Open edition");
   const isLoggedUser = userProfile.user_id === user.user_id;
 
   const handleOnSubmit = async (e) => {
@@ -26,7 +26,7 @@ function UserUsername({ userProfile }) {
     setIsEditDisabled(true);
     setIsHidden(true);
     setCurrentUsername(newUsername);
-    setEditToggle("Open edit");
+    setEditToggle("Open edition");
   };
 
   const handleChange = (e) => {
@@ -48,11 +48,11 @@ function UserUsername({ userProfile }) {
               if (isEditDisabled) {
                 setIsEditDisabled(false);
                 setIsHidden(false);
-                setEditToggle("Close edit");
+                setEditToggle("Close");
               } else {
                 setIsEditDisabled(true);
                 setIsHidden(true);
-                setEditToggle("Open edit");
+                setEditToggle("Open edition");
               }
             }}
           >
