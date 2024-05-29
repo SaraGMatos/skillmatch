@@ -43,13 +43,29 @@
   padding-bottom: 30px;
 }
 
-.reviewUsername {
+.reviewerDetails {
   grid-column-start: 1;
-  grid-row-start: 5;
+  grid-row-start: 6;
   margin-top: 10px;
   margin-left: 5px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
+  color: black;
 }
+
+.reviewerDetails:visited {
+  color: black;
+}
+
+.reviewerImg{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
 
 .reviewDeleteBtn {
   grid-column-start: 3;
