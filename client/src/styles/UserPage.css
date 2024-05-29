@@ -171,3 +171,14 @@ h6 {
   border-radius: 10px;
   /* border: 1px solid rgb(201, 201, 201); */
 }
+
+@media (max-width: 450px) {
+  .profile_photo_container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+
+    display: flex;
+    margin: auto;
+  }
+}
