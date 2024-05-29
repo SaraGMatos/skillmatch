@@ -31,7 +31,8 @@ function ConnectionsPage() {
         async function addLastMessageTime () {
           for (const chat of chats) {
             const { data } = await supabase.rpc("get_chat_messages", {chatid: chat.chat_id,})
-            chat.last_message_time = Date.parse(data[data.length-1].time_created)
+            if (data.length) chat.last_message_time = Date.parse(data[data.length-1].time_created)
+            else chat.last_message_time = Date.now();
           }
         }
         addLastMessageTime()
