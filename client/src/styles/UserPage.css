@@ -164,3 +164,18 @@ h6 {
   border-radius: 10px;
   /* border: 1px solid rgb(201, 201, 201); */
 }
+
+.username-container {
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.username-container form input {
+  margin: 5px;
+  padding: 2px;
+  width: 100px;
+  border-radius: 3px;
+}
