@@ -60,6 +60,7 @@ export default function Chat() {
     e.preventDefault();
     e.target.form[0].value = "";
     socket.emit("send_message", { message, room: chatId });
+    localStorage.setItem(`${chat.chat_id}_last_seen`, Date.now() + 1000)
     postMessage();
   };
 
