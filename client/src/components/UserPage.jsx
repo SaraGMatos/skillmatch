@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 import supabase from "../../config/config_file";
 import "../styles/UserPage.css";
 import UserDescription from "./UserDescription";
-import UserpageConnect from "./UserpageConnect";
 
 function UserPage() {
   const [interestIsVisible, setInterestIsVisible] = useState(false);
@@ -70,10 +69,7 @@ function UserPage() {
           />
         </div>
         <div>
-          <UserUsername
-            userProfile={userProfile}
-          />
-          <UserpageConnect userProfile={userProfile} />
+          <UserUsername userProfile={userProfile} />
         </div>
 
         <UserDescription
@@ -93,7 +89,7 @@ function UserPage() {
           </button>
           {interestIsVisible && <UserInterests userProfile={userProfile} />}
         </div>
-        
+
         <div className="each_User_Page_Section">
           <button className="buttonToggle" onClick={handleToggleSkills}>
             User Skills
