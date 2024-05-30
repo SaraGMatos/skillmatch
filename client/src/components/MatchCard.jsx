@@ -50,21 +50,23 @@ function MatchCard({ avatar_url, username, user_id }) {
         <Link className="match_username" to={`/user/${user_id}`}>
           <h4>{username}</h4>
         </Link>
-        {isLearningList ? null : (
+        <div className="skills-interests">
+          {isLearningList ? null : (
+            <p className="skills_interests">
+              <p p className="skills_and_interest_title">
+                {" "}
+                Interests:
+              </p>{" "}
+              {userInterests.length !== 0
+                ? userInterests.toString().replace(/,/g, ", ")
+                : "Nothing here yet!"}
+            </p>
+          )}
           <p className="skills_interests">
-            <p p className="skills_and_interest_title">
-              {" "}
-              Interests:
-            </p>{" "}
-            {userInterests.length !== 0
-              ? userInterests.toString().replace(/,/g, ", ")
-              : "Nothing here yet!"}
+            <p className="skills_and_interest_title">Skills:</p>{" "}
+            {userSkills.toString().replace(/,/g, ", ")}
           </p>
-        )}
-        <p className="skills_interests">
-          <p className="skills_and_interest_title">Skills:</p>{" "}
-          {userSkills.toString().replace(/,/g, ", ")}
-        </p>
+        </div>
       </div>
     </div>
   );

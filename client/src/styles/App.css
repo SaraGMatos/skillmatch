@@ -160,6 +160,11 @@ input[type="password"]::placeholder {
   flex-wrap: wrap;
 } */
 
+.skills-interests {
+  display: flex;
+  flex-direction: column;
+}
+
 .home_button {
   width: 40px;
   height: auto;
