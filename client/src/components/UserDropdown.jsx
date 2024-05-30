@@ -26,17 +26,54 @@ function UserDropdown() {
     const usernameToConnect = prompt("Username: (case sensitive) ");
     const userIdToConnect = await getUser(usernameToConnect);
 
-    if (!!userIdToConnect) {
-      let { data, error } = await supabase.rpc("post_chat", {
-        chatname: "",
-      });
-      const chatId = data.chat_id;
-      const id = await user.user_id;
-      await supabase.from("UserChats").insert([
-        { chat_id: chatId, user_id: id },
-        { chat_id: chatId, user_id: userIdToConnect.user_id },
-      ]);
-      navigate(`/connections`);
+    if (!!userIdToConnect && usernameToConnect !== "") {
+
+      const userChats = await supabase
+        .rpc('get_chats_by_user_id', {
+          userid: user.user_id
+        })
+      if (userChats.error) console.error(userChats.error)
+
+      const userToConnectChats = await supabase
+        .rpc('get_chats_by_user_id', {
+          userid: userIdToConnect.user_id
+        })
+      if (userToConnectChats.error) console.error(userToConnectChats.error)
+
+      const userChatIds = userChats.data.map((chat)=>{ return chat.chat_id})
+      const userToConnectChatIds = userToConnectChats.data.map((chat)=>{ return chat.chat_id})
+      const commonChatIds = userChatIds.filter(element => userToConnectChatIds.includes(element));
+      let commonChatExists = false;
+
+      if (commonChatIds.length > 0) {
+        for (const chatId of commonChatIds) {
+          let { data, error } = await supabase
+          .rpc('get_users_by_chat_id', {
+            chatid: chatId
+          })
+          if (error) console.error(error)
+          else {
+            if (data.length === 2) { 
+              alert("You already have a chat with this user!"); 
+              commonChatExists = true;
+              break;
+            }
+          }
+        }
+      }
+
+      if (!commonChatExists) {
+        let { data, error } = await supabase.rpc("post_chat", {
+          chatname: "",
+        });
+        const chatId = data.chat_id;
+        const id = await user.user_id;
+        await supabase.from("UserChats").insert([
+          { chat_id: chatId, user_id: id },
+          { chat_id: chatId, user_id: userIdToConnect.user_id },
+        ]);
+        navigate(`/connections`);
+      }
     } else {
       alert("Username doesn't exist!");
     }
