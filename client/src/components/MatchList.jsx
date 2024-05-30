@@ -3,6 +3,7 @@ import supabase from "../../config/config_file";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import Loading from "./Loading";
+import Lottie from "lottie-react";
 
 function MatchList({ currentSortBy }) {
   const { user } = useContext(UserContext);
@@ -91,6 +92,7 @@ function MatchList({ currentSortBy }) {
   };
 
   useEffect(() => {
+    let staticUsers = [];
     setIsLoading(true);
     setHasMatches(true);
 
@@ -98,6 +100,7 @@ function MatchList({ currentSortBy }) {
       getMatchedUsers()
         .then((data) => {
           setMatchedUsers(data);
+          staticUsers = [...data];
         })
         .then(() => {
           if (currentSortBy.length > 0) {
@@ -111,8 +114,13 @@ function MatchList({ currentSortBy }) {
                     skillid: data,
                   })
                   .then(({ data }) => {
-                    setMatchedUsers(data);
-                    if (data.length === 0) {
+                    const filteredData = data.filter((user) => {
+                      return staticUsers.find((dataUser) => {
+                        return dataUser.user_id === user.user_id;
+                      });
+                    });
+                    setMatchedUsers(filteredData);
+                    if (filteredData.length === 0) {
                       setHasMatches(false);
                     }
                     setIsLoading(false);
