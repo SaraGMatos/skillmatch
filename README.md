@@ -166,6 +166,4 @@ npm run dev
 [Supabase]: https://img.shields.io/badge/Supabase-20232A?style=for-the-badge&logo=supabase&logoColor=61DAFB
 [Supabase-url]: https://supabase.com
 
-```
 
-```
