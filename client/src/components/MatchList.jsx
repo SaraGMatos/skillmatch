@@ -3,7 +3,7 @@ import supabase from "../../config/config_file";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import Loading from "./Loading";
-import Lottie from "lottie-react";
+import EmptyListMessage from "./EmptyListMessage";
 
 function MatchList({ currentSortBy }) {
   const { user } = useContext(UserContext);
@@ -150,7 +150,7 @@ function MatchList({ currentSortBy }) {
             })}
           </ul>
         ) : (
-          <p>Sorry, you don't have any matches at the moment!</p>
+          <EmptyListMessage />
         )
       ) : (
         <Loading />
