@@ -8,6 +8,7 @@
   align-content: center;
   justify-content: left;
   width: 80vw;
+  height: 100%;
 
   border-radius: 5px;
   padding: 5px;
@@ -79,7 +80,7 @@
 }
 
 .red-dot {
-  position:absolute;
+  position: absolute;
   height: 15px;
   width: 15px;
   background-color: red;
