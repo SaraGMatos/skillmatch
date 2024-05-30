@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 10px;
   border: none;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .button_filter_component {
