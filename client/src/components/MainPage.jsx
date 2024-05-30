@@ -24,6 +24,11 @@ function MainPage() {
       if (!data.user_id) {
         let { data, error } = await supabase.rpc("post_user", {
           userid: userId,
+          username: `default_username${Math.floor(Math.random() * 1000 + 1)}`,
+          description:
+            "Please complete your profile to be able to match and connect with people!",
+          avatarurl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKsNmCFrzGx_4sCjsUxR-YXkEKn1WylKpxzoYrtDKN2Knc3y6EGSUckAkUm3O4f6ORnLs&usqp=CAU",
         });
         setUser(data);
         if (error) {
