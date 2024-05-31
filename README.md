@@ -18,6 +18,7 @@ Introducing SkillMatch, a web-based app that provides a platform for connecting 
 - [![React][React.js]][React-url]
 - [![Node][Node.js]][Node-url]
 - [![Supabase][Supabase]][Supabase-url]
+- [![Socket.IO][https://socket.io/]
 
 ## Brief Project Insight & Members
 
