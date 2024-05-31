@@ -143,7 +143,9 @@ npm run dev
 
 - Sign up to create an account and you're good to go!
 
-## Project Members
+## Project Insight & Members
+
+This full-stack project was planned, designed and developed in just 8 days during the final project phase at the Northcoders Software Development bootcamp.
 
 | **Name**         | **Links**                                                                                                            |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -152,6 +154,10 @@ npm run dev
 | Jack Brown       | [LinkedIn](https://www.linkedin.com/in/jack-brown-ab2a84286/) \| [GitHub](https://github.com/ClaretJack/)            |
 | Muhammad Sallu   | [LinkedIn](https://www.linkedin.com/in/muhammad-sallu/) \| [GitHub](https://github.com/MuhammadSallu)                |
 | Sara Matos       | [LinkedIn](https://www.linkedin.com/in/saragmatos/) \| [GitHub](https://github.com/SaraGMatos/)                      |
+
+## Contributions
+
+This project is open to contributions. Feel free to submit a pull request if you would like to make a suggestion or raise an issue or problem with the code.
 
 ## Acknowledgments
 
