@@ -19,6 +19,18 @@ Introducing SkillMatch, a web-based app that provides a platform for connecting 
 - [![Node][Node.js]][Node-url]
 - [![Supabase][Supabase]][Supabase-url]
 
+## Brief Project Insight & Members
+
+This full-stack project was planned, designed and developed in just 8 days during the final project phase at the Northcoders Software Development bootcamp.
+
+| **Name**         | **Links**                                                                                                            |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Dorota Szubert   | [LinkedIn](https://www.linkedin.com/in/dorota-szubert-333545239/) \| [Github](https://github.com/DeeSzubert)         |
+| Fabian Fernandez | [LinkedIn](https://www.linkedin.com/in/fabian-fernandez-a2b67818/) \| [GitHub](https://github.com/FabianFernandezM/) |
+| Jack Brown       | [LinkedIn](https://www.linkedin.com/in/jack-brown-ab2a84286/) \| [GitHub](https://github.com/ClaretJack/)            |
+| Muhammad Sallu   | [LinkedIn](https://www.linkedin.com/in/muhammad-sallu/) \| [GitHub](https://github.com/MuhammadSallu)                |
+| Sara Matos       | [LinkedIn](https://www.linkedin.com/in/saragmatos/) \| [GitHub](https://github.com/SaraGMatos/)                      |
+
 ## Getting Started
 
 To get started with SkillMatch, the hosted version of our web-based app can be found at: [https://skillmatched.netlify.app/](https://skillmatched.netlify.app/). After creating an account and setting up a profile, you're good to go finding a learning or teaching partner!
@@ -142,18 +154,6 @@ npm run dev
 10. **Signing In**
 
 - Sign up to create an account and you're good to go!
-
-## Project Insight & Members
-
-This full-stack project was planned, designed and developed in just 8 days during the final project phase at the Northcoders Software Development bootcamp.
-
-| **Name**         | **Links**                                                                                                            |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Dorota Szubert   | [LinkedIn](https://www.linkedin.com/in/dorota-szubert-333545239/) \| [Github](https://github.com/DeeSzubert)         |
-| Fabian Fernandez | [LinkedIn](https://www.linkedin.com/in/fabian-fernandez-a2b67818/) \| [GitHub](https://github.com/FabianFernandezM/) |
-| Jack Brown       | [LinkedIn](https://www.linkedin.com/in/jack-brown-ab2a84286/) \| [GitHub](https://github.com/ClaretJack/)            |
-| Muhammad Sallu   | [LinkedIn](https://www.linkedin.com/in/muhammad-sallu/) \| [GitHub](https://github.com/MuhammadSallu)                |
-| Sara Matos       | [LinkedIn](https://www.linkedin.com/in/saragmatos/) \| [GitHub](https://github.com/SaraGMatos/)                      |
 
 ## Contributions
 
